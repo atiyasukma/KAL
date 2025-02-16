@@ -1,0 +1,1255 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Eliminasi Gaussian &#8212; Physics tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "moelaab/alin");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Eliminasi_Gaussian';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Memecahkan Sistem persaman menggunakan Eliminasi" href="Solusi_Sistem.html" />
+    <link rel="prev" title="Sistem Linier" href="Sistem_Linier.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Pengantar.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Physics tutorials - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Physics tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Pengantar.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Sistem_Linier.html">Sistem Linier</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Eliminasi Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Solusi_Sistem.html">Memecahkan Sistem persaman menggunakan Eliminasi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matrik_Inverse.html">Matrik Invers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Faktorisasi_LU.html">Faktorisasi LU</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin/issues/new?title=Issue%20on%20page%20%2FEliminasi_Gaussian.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Eliminasi_Gaussian.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Eliminasi Gaussian</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-1-operasi-baris-dan-eliminasi">Contoh 1:  Operasi baris dan eliminasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-2-eliminasi-pada-array-acak">Contoh 2:  Eliminasi pada array acak</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-3-menentukan-pivot">Contoh 3: Menentukan pivot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-4-eliminasi-yang-gagal">Contoh 4:  Eliminasi yang gagal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-5-penyelesaian-tidak-tunggal">Contoh 5:  Penyelesaian tidak tunggal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="eliminasi-gaussian">
+<h1>Eliminasi Gaussian<a class="headerlink" href="#eliminasi-gaussian" title="Link to this heading">#</a></h1>
+<p>Pada bagian ini kita mendefinisikan beberapa fungsi Python untuk membantu kita menyelesaikan sistem linier. Algoritme ini dikenal sebagai Eliminasi Gaussian, yang nanti kita akan sebut dengan  <strong>eliminasi</strong>. Ide eliminasi adalah menukar sistem yang ada dengan sistem lain yang memiliki penyelesaian yang sama, namun lebih mudah diselesaikan. Untuk mencapai tujuan ini, kami akan melakukan serangkaian langkah yang disebut <strong>operasi baris</strong> yang mempertahankan penyelesaian sistem sekaligus secara bertahap membuat penyelesaian lebih mudah dilakukan. Ada tiga operasi yang dapat kami lakukan.</p>
+<ol class="arabic simple">
+<li><p>Tukarkan posisi kedua persamaan.</p></li>
+<li><p>Kalikan persamaan dengan bilangan apa pun yang bukan nol.</p></li>
+<li><p>Gantikan suatu persamaan dengan jumlah persamaan itu sendiri dan kelipatan persamaan lainnya.</p></li>
+</ol>
+<p><a id='GE1'></a></p>
+<section id="contoh-1-operasi-baris-dan-eliminasi">
+<h2>Contoh 1:  Operasi baris dan eliminasi<a class="headerlink" href="#contoh-1-operasi-baris-dan-eliminasi" title="Link to this heading">#</a></h2>
+<p>Perhatikan contoh berikut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
+4x_1 + 2x_2 -3x_3 &amp; = &amp; -2
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Kita dapat menukar persamaan pertama dengan yang persamaan terakhir</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+4x_1 + 2x_2 -3x_3 &amp; = &amp; -2 \\
+2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
+x_1 - x_2 + x_3 &amp; = &amp; 3
+\end{eqnarray*}
+\end{split}\]</div>
+<p>atau kita dapat mengalikan persamaan pertama dengan<span class="math notranslate nohighlight">\(5\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+5x_1 - 5x_2 + 5x_3 &amp; = &amp; 15\\
+2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
+4x_1 + 2x_2 -3x_3 &amp; = &amp; -2
+\end{eqnarray*}
+\end{split}\]</div>
+<p>atau kita dapat menambahkan 2 kali persamaan pertama dengan persamaan terakhir</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 + x_2 + 3x_3 &amp; = &amp; 8\\
+6x_1 \quad\quad -x_3 &amp; = &amp; 4
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Operasi terakhir adalah yang paling penting karena memungkinkan kita <em>mengeliminasi</em> variabel dari salah satu persamaan. Perhatikan bahwa persamaan ketiga tidak lagi mengandung suku <span class="math notranslate nohighlight">\(x_2\)</span>. Ini adalah kunci dari algoritma eliminasi.</p>
+<p>Untuk tujuan komputasi, kita dapat membuang nama variabel dan simbol “=”, dan mengatur semua angka sebenarnya dalam sebuah array.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{rrrr} 1 &amp; -1 &amp; 1 &amp; 3 \\ 2 &amp; 1 &amp; 8 &amp; 18 \\ 4 &amp; 2 &amp; -3 &amp; -2 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Sekarang mari kita buat array NumPy dengan nilai-nilai ini. Kita akan memberi nama pada array <span class="math notranslate nohighlight">\(\texttt{A}\)</span>, sehingga kita bisa merujuknya nanti.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kita bisa mulai melakukan operasi pada array, namun pertama kali kita akan menulis beberapa kode program python yang akan digunakan untuk  perhitungan selanjutnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RowSwap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     A is a NumPy array.  RowSwap will return duplicate array with rows</span>
+<span class="c1">#     k and l swapped.</span>
+<span class="c1"># =============================================================================</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># m is number of rows in A</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># n is number of columns in A</span>
+
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+
+    <span class="k">return</span> <span class="n">B</span>
+
+<span class="k">def</span> <span class="nf">RowScale</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">scale</span><span class="p">):</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     A is a NumPy array.  RowScale will return duplicate array with the</span>
+<span class="c1">#     entries of row k multiplied by scale.</span>
+<span class="c1"># =============================================================================</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># m is number of rows in A</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># n is number of columns in A</span>
+
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale</span>
+
+    <span class="k">return</span> <span class="n">B</span>
+
+<span class="k">def</span> <span class="nf">RowAdd</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">scale</span><span class="p">):</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     A is a numpy array.  RowAdd will return duplicate array with row</span>
+<span class="c1">#     l modifed.  The new values will be the old values of row l added to</span>
+<span class="c1">#     the values of row k, multiplied by scale.</span>
+<span class="c1"># =============================================================================</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># m is number of rows in A</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># n is number of columns in A</span>
+
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span>
+
+    <span class="k">return</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kami sekarang memiliki tiga fungsi  yang disebut <span class="math notranslate nohighlight">\(\texttt{RowSwap}\)</span>,<span class="math notranslate nohighlight">\(\texttt{RowScale}\)</span>, dan <span class="math notranslate nohighlight">\(\texttt{RowAdd}\)</span>. Mari kita mencobanya untuk melihat apa yang akan hasilkan oleh fungsi fungsi tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B1</span> <span class="o">=</span> <span class="n">RowSwap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">B2</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">B3</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1 -1  1  3]
+ [ 2  1  8 18]
+ [ 4  2 -3 -2]]
+
+
+[[ 1.  -1.   1.   3. ]
+ [ 2.   1.   8.  18. ]
+ [ 2.   1.  -1.5 -1. ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tujuan dari eliminasi adalah untuk melakukan operasi baris pada array ini untuk menghasilkan array baru dengan struktur seperti berikut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{cccc} 1 &amp; * &amp; * &amp; * \\ 0 &amp; 1 &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p><em>(Catatan simbol * disini menyatakan nilai nilai yang tidak diketahui yang mungkin 0 atau 1.)</em></p>
+<p>Kami akan menjalankan operasi baris dan menyimpan tahapan tersebut sebagai array  baru spada  setiap langkah. Misalnya, kita menyebutnya dengan  <span class="math notranslate nohighlight">\(\texttt{A1}\)</span>, <span class="math notranslate nohighlight">\(\texttt{A2}\)</span>, <span class="math notranslate nohighlight">\(\texttt{A3}\)</span>, dll. Dengan cara ini kita dapat memeriksa prosesnya, atau membuat perubahan sesuai yang kita inginkan</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tambahkan -2 kali baris 0 ke baris 1</span>
+<span class="n">A1</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">## Tambahkan -4 kali baris 0 ke baris 2</span>
+<span class="n">A2</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">## Tambahkan -2 kali baris 1 ke baris 2</span>
+<span class="n">A3</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">## Kalikan baris 1 dengan 1/3</span>
+<span class="n">A4</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">A3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">## Kalikan baris 2 dengan 1/19</span>
+<span class="n">A5</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">A4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/-</span><span class="mf">19.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1. -1.  1.  3.]
+ [ 0.  3.  6. 12.]
+ [ 4.  2. -3. -2.]] 
+
+[[  1.  -1.   1.   3.]
+ [  0.   3.   6.  12.]
+ [  0.   6.  -7. -14.]] 
+
+[[  1.  -1.   1.   3.]
+ [  0.   3.   6.  12.]
+ [  0.   0. -19. -38.]] 
+
+[[  1.  -1.   1.   3.]
+ [  0.   1.   2.   4.]
+ [  0.   0. -19. -38.]] 
+
+[[ 1. -1.  1.  3.]
+ [ 0.  1.  2.  4.]
+ [-0. -0.  1.  2.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sekarang mari kita terjemahkan array matrik ini kembali ke sistem persamaan</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+x_2 + 2x_3 &amp; = &amp; 4\\
+x_3 &amp; = &amp; 2
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Setelah langkah-langkah eliminasi, kita mempunyai apa yang dikenal sebagai sistem <strong>segitiga atas</strong>. Penyelesain terhadap sistem ini mudah ditemukan,yaitu dengan menemukan penyelesaian dari persamaan terakhir. Persamaan terakhir memberitahu kita bahwa <span class="math notranslate nohighlight">\(x_3 = 2\)</span>. Jika kita mensubstitusikan nilai tersebut ke persamaan kedua, kita mendapatkan <span class="math notranslate nohighlight">\(x_2 = 0\)</span>. Terakhir, jika kita substitusikan kembali nilai-nilai <span class="math notranslate nohighlight">\(x_3\)</span> dan <span class="math notranslate nohighlight">\(x_2\)</span> ini ke persamaan pertama, kita akan mendapatkan <span class="math notranslate nohighlight">\(x_1 = 1.\)</span> Proses mencari penyelesain sistem segitiga atas ini disebut <strong>substitusi balik</strong>.</p>
+</section>
+<section id="contoh-2-eliminasi-pada-array-acak">
+<h2>Contoh 2:  Eliminasi pada array acak<a class="headerlink" href="#contoh-2-eliminasi-pada-array-acak" title="Link to this heading">#</a></h2>
+<p>Jika suatu sistem persamaan mempunyai solusi, algoritma eliminasi akan selalu menghasilkan sistem segitiga atas yang dapat diselesaikan dengan substitusi balik. Dalam contoh berikutnya, kita melakukan perhitungan dengan sedikit perubahan agar dapat digunakan sebagai acuan untuk melakukan perhitungan secara umum. Kali ini  kita menggunakan fungsi <span class="math notranslate nohighlight">\(\texttt{RowAdd}\)</span>, untuk mengatur parameter <em>scale</em> berdasarkan nilai dalam array.</p>
+<p>Kita akan membuat matriks dengan nilai elemen-elemen acak menggunakan modul <span class="math notranslate nohighlight">\(\texttt{random}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-6 -8  3 -1]
+ [ 3 -3  0  6]
+ [-3 -4 -5 -3]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Skalakan baris pertama berdasarkan elemen pertama pada baris tersebut.</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">## Tambahkan baris pertama ke baris kedua berdasarkan elemen pertama di baris kedua.</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">## Tambahkan baris pertama ke baris terakhir berdasarkan elemen pertama di baris terakhir.</span>
+<span class="n">R3</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">R2</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">## Skalakan baris kedua berdasarkan elemen kedua di baris tersebut.</span>
+<span class="n">R4</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R3</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">## Tambahkan baris kedua ke baris terakhir berdasarkan elemen kedua di baris terakhir.</span>
+<span class="n">R5</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">R4</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1">## Skalakan baris terakhir berdasarkan elemen terakhir pada baris tersebut.</span>
+<span class="n">R6</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R5</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.          1.33333333 -0.5         0.16666667]
+ [-0.          1.         -0.21428571 -0.78571429]
+ [-0.         -0.          1.          0.38461538]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setelah kami memahami cara kerja operasi baris, dan kami yakin bahwa operasi tersebut berfungsi dengan benar, sehingga kita tidak perlu menyimpan setiap prose eliminasi. Oleh karena itu kita dapat menyederhanakan kode dengan menggunakan kembali nama array yang sama untuk setiap langkah. Kode berikut akan menghasilkan hasil yang sama.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Jalankan kode dalam contoh ini beberapa kali. Setiap kali array <span class="math notranslate nohighlight">\(\texttt{R}\)</span> dibuat, array tersebut akan diisi dengan bilangan bulat acak antara -8 dan 8. Apakah kode tersebut selalu menghasilkan sistem segitiga atas yang siap untuk disubstitusi balik? perhtaikan apkah Anda  mengetahui bagian mana dari proses yang mungkin gagal, dan mengapa?</p>
+</section>
+<section id="contoh-3-menentukan-pivot">
+<h2>Contoh 3: Menentukan pivot<a class="headerlink" href="#contoh-3-menentukan-pivot" title="Link to this heading">#</a></h2>
+<p>Seperti yang bisa kita lihat, kode pada contoh terakhir gagal jika angka nol muncul sebagai salah satu entri dalam larik yang kita bagi untuk mendapatkan faktor skala. Elemen penting ini disebut dengan <strong>pivot</strong>, dan lokasinya dalam matriks disebut <strong>posisi pivot</strong>. Menurut definisi, pivot harus bukan nol. Jika angka nol muncul di posisi pivot pada  tahap eliminasi, kita dapat  menukar urutan baris untuk memindahkan elemen bukan nol ke posisi pivot. Baiklah, kita coba untuk sistem persamaan  tertentu sebelum mencoba menulis kode program yang akan digunakan pada  sembarang sistem persamaan</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 - 2x_2 + 4x_3 &amp; = &amp; 8\\
+3x_1 \quad\quad -9x_3 &amp; = &amp; 0
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1 -1  1  3]
+ [ 2 -2  4  8]
+ [ 3  0 -9  0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tambahkan -2 kali baris 0 ke baris 1</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Tambahkan -3 kali baris 0 ke baris 2</span>
+<span class="n">G2</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  1.  -1.   1.   3.]
+ [  0.   0.   2.   2.]
+ [  0.   3. -12.  -9.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Disini <strong>ada angka nol</strong> di posisi pivot tengah. Kita dapat menukar persamaan tengah dan persamaan terakhir untuk melanjutkan eliminasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Swap rows 1 and 2</span>
+<span class="n">G3</span> <span class="o">=</span> <span class="n">RowSwap</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Scale the new row 1 by 1/3</span>
+<span class="n">G4</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">G3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">## Scale the new row 2 by 1/2</span>
+<span class="n">G5</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">G4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1. -1.  1.  3.]
+ [ 0.  1. -4. -3.]
+ [ 0.  0.  1.  1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kami tulis sistem itu lagi sebagai serangkaian persamaan yang berubah susunannya seperti berikut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+x_2 - 4x_3 &amp; = &amp; -3\\
+x_3 &amp; = &amp; 1
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Gunakan subsitusi balik, kita menemukan<span class="math notranslate nohighlight">\(x_2 = 1\)</span> dan <span class="math notranslate nohighlight">\(x_1=3\)</span>.</p>
+<p>Perlu dicatat bahwa pertukaran baris hanya diperlukan sebagai masalah penyusunan kembali persamaan. Berikut adalah cara lain yang bisa kita lakukan pada  sistem yang persamaan seperti diatas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Skalakan bari 1 dengan 1/2</span>
+<span class="n">G3_alternative</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Skalakan baris 2 dengan 1/3</span>
+<span class="n">G4_alternative</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">G3_alternative</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">G4_alternative</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1. -1.  1.  3.]
+ [ 0.  0.  1.  1.]
+ [ 0.  1. -4. -3.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Persamaan yang  yang dihasilkan  adalah sistem persamaan yang sama, tetapi urutan persamaan berbeda.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+x_3 &amp; = &amp; 1 \\
+x_2 - 4x_3 &amp; = &amp; -3
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Ide substitusi balik juga dapat diterapkan pada sistem ini, namun pengaturan algoritmanya sedikit lebih rumit.</p>
+<p><a id='GE4'></a></p>
+</section>
+<section id="contoh-4-eliminasi-yang-gagal">
+<h2>Contoh 4:  Eliminasi yang gagal<a class="headerlink" href="#contoh-4-eliminasi-yang-gagal" title="Link to this heading">#</a></h2>
+<p>Mari kita sedikit lakukan perubahan  pada sistem pada contoh sebelumnya dan amati contoh ini bagaimana proses eliminasi dapat terhenti.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 - 2x_2 + 4x_3 &amp; = &amp; 8\\
+3x_1 -3x_2 -9x_3 &amp; = &amp; 0
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1 -1  1  3]
+ [ 2 -2  4  8]
+ [ 3 -3 -9  0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tambahkan -2 kali baris 0 ke baris 1</span>
+<span class="n">H1</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Tambahkan -3 kali baris 0 ke baris 2</span>
+<span class="n">H2</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">H1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">H2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  1.  -1.   1.   3.]
+ [  0.   0.   2.   2.]
+ [  0.   0. -12.  -9.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dalam hal ini menukar baris kedua dan ketiga tidak dapat membantu peyelesain karena kedua baris memiliki nilai nol di elemen tengah. Artinya tidak ada pivot pada kolom kedua. Mari kita skalakan barisnya dan lihat hasilnya..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Kalikan baris 1 dengan 1/2</span>
+<span class="n">H3</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">H2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Kalikan baris 2 dengan -1/12</span>
+<span class="n">H4</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">H3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">H4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.   -1.    1.    3.  ]
+ [ 0.    0.    1.    1.  ]
+ [-0.   -0.    1.    0.75]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pada persamaan tersebut, kita melihat bahwa sistem ini <strong>tidak konsisten</strong>. Dua persamaan terakhir saling bertentangan.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+x_3 &amp; = &amp; 1 \\
+x_3 &amp; = &amp; 0.75
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Perhatikan bahwa kita tidak melakukan kesalahan apa pun dalam proses perhitungan dan tidak ada cara untuk menyusun ulang persamaan tersebut untuk mengatasi masalah tersebut. Oleh karena itu,sistem ini tidak mempunyai penyelesaian. Kami akan mambahas  ini kembali di bagian selanjutnya dan memberikan penjelasan  untuk sistem tersebut.</p>
+</section>
+<section id="contoh-5-penyelesaian-tidak-tunggal">
+<h2>Contoh 5:  Penyelesaian tidak tunggal<a class="headerlink" href="#contoh-5-penyelesaian-tidak-tunggal" title="Link to this heading">#</a></h2>
+<p>Dalam contoh eliminasi terakhir ini, kita mengamati kemungkinan hasil lain dari proses tersebut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 - 2x_2 + 4x_3 &amp; = &amp; 8\\
+3x_1 -3x_2 +3x_3 &amp; = &amp; 9
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1 -1  1  3]
+ [ 2 -2  4  8]
+ [ 1 -1  3  5]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tambahkan -2 kali baris 0 ke baris 1</span>
+<span class="n">F1</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">## Tambahkan -3 kali baris 0 ke baris 2</span>
+<span class="n">F2</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">F1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">F2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1. -1.  1.  3.]
+ [ 0.  0.  2.  2.]
+ [ 0.  0.  2.  2.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mirip dengan contoh sebelumnya, kita melihat bahwa tidak ada cara untuk memasukkan nilai bukan nol ke kolom kedua pada baris kedua. Namun dalam kasus ini kita melihat bahwa persamaan kedua dan ketiga tidak saling bertentangan, namun sebenarnya merupakan persamaan yang sama.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_3 &amp; = &amp; 2\\
+2x_3 &amp; = &amp; 2
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Mari kita lakukan lagi dua operasi baris  untuk menyederhanakan sistem ini lebih jauh.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tambahkan -1 kali baris 1 ke baris 2</span>
+<span class="n">F3</span> <span class="o">=</span> <span class="n">RowAdd</span><span class="p">(</span><span class="n">F2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">## Kalikan baris 1 dengan 1/2</span>
+<span class="n">F4</span> <span class="o">=</span> <span class="n">RowScale</span><span class="p">(</span><span class="n">F3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">F4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1. -1.  1.  3.]
+ [ 0.  0.  1.  1.]
+ [ 0.  0.  0.  0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kita melihat dari  persamaan terakhir berlaku untuk semua nilai <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>, oleh karena itu ebenarnya hanya ada dua persamaan yang  menentukan nilai dari tiga nilai yang tidak diketahui.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+x_3 &amp; = &amp; 1\\
+0 &amp; = &amp; 0
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Karena persamaan yang ditengah menunjukkan bahwa <span class="math notranslate nohighlight">\(x_3=1\)</span>, kita dapat memasukkan nilai tersebut ke persamaan pertama menggunakan ide substitusi balik. Hasilnya adalah persamaan tunggal <span class="math notranslate nohighlight">\(x_1-x_2 = 2\)</span>. Persamaan ini, dan sistem secara keseluruhan, memiliki <em>jumlah solusi tak terhingga</em>. Kami akan membaha lagi  dan akan memberikan rincian lebih lanjut tentang hal di bab berikutnya.</p>
+</section>
+<section id="latihan">
+<h2>Latihan<a class="headerlink" href="#latihan" title="Link to this heading">#</a></h2>
+<p><strong>Latihan 1:</strong> Pada sistem di bawah ini, gunakan fungsi operasi baris untuk menghasilkan koefisien nol di lokasi koefisien 12. Lakukan ini dengan menghitung secara manual lalu buat array NumPy untuk menyatakan sistem persamaan dan gunakan fungsi operasi baris. (<em>Ada dua cara untuk membuat angka nol menggunakan <span class="math notranslate nohighlight">\(\texttt{RowAdd}\)</span>. Coba temukan keduanya.</em>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+4x_1 - 2x_2 + 7x_3 &amp; = &amp; 2\\
+x_1 + 3x_2 + 12x_3 &amp; = &amp; 4\\
+-7x_1 \quad\quad - 3x_3 &amp; = &amp; -1
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 2:</strong> Buat array NumPy untuk mewakili sistem persamaan di bawah ini. Tentukan koefisien mana yang harus sama dengan nol agar sistem tersebut berbentuk segitiga atas. Gunakan <span class="math notranslate nohighlight">\(\texttt{RowAdd}\)</span> untuk menjalankan operasi baris dan kemudian cetak hasilnya.
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray*}
+3x_1 + 4x_2 \, - \,\,\,\,\,  x_3 &amp;   =   &amp; -6\\
+-2x_2   +  10x_3  &amp;   =   &amp; -8\\
+4x_2   \,  - \,\, 2x_3 &amp;  =  &amp; -2
+\end{eqnarray*}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 3:</strong> Lakukan proses eliminasi pada sistem berikut. Tentukan array NumPy dan manfaatkan fungsi operasi baris. Cetak hasil setiap langkah. Tuliskan sistem segitiga atas yang diwakili oleh array setelah menyelesaiakan semua langkah</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 + x_3 &amp; = &amp; 3\\
+2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
+4x_1 + 2x_2 -3x_3 &amp; = &amp; -2
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 4:</strong> Gunakan operasi baris pada sistem di bawah ini untuk menghasilkan sistem <strong>segitiga bawah</strong>. Persamaan pertama sistem segitiga bawah hanya boleh berisi <span class="math notranslate nohighlight">\(x_1\)</span> dan persamaan kedua hanya berisi <span class="math notranslate nohighlight">\(x_1\)</span> dan <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 + 2x_2 + x_3 &amp; = &amp; 3\\
+3x_1 - x_2 - 3x_3 &amp; = &amp; -1\\
+2x_1 + 3x_2 + x_3 &amp; = &amp; 4
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 5:</strong> Gunakan eliminasi untuk menentukan apakah sistem berikut <strong>konsisten</strong> atau <strong>tidak konsisten</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 - x_2 - x_3 &amp; = &amp; 4\\
+2x_1 - 2x_2 - 2x_3 &amp; = &amp; 8\\
+5x_1 - 5x_2 - 5x_3 &amp; = &amp; 20
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 6:</strong> Gunakan eliminasi untuk menunjukkan bahwa sistem persamaan ini tidak mempunyai penyelesaian.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1  +  x_2 +  x_3 &amp; = &amp; 0\\
+x_1 -  x_2 + 3x_3 &amp; = &amp; 3\\
+-x_1 - x_2 - x_3 &amp; = &amp; 2
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 7:</strong> Gunakan modul <span class="math notranslate nohighlight">\(\texttt{random}\)</span> untuk menghasilkan array <span class="math notranslate nohighlight">\(3\times 4\)</span> yang berisi bilangan bulat acak antara <span class="math notranslate nohighlight">\(0\)</span> dan <span class="math notranslate nohighlight">\(5\)</span>. Tulis kode yang melakukan operasi baris untuk menghasilkan matriks dengan nilai nol pada baris pertama, kolom ketiga. Jalankan kode beberapa kali untuk memastikan kode berfungsi pada array acak <strong>berbeda</strong>. Apakah kodenya akan gagal?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 8:</strong> Mulai dari array yang mewakili sistem segitiga atas di <strong>Contoh 1</strong> (<span class="math notranslate nohighlight">\(\texttt{A5}\)</span>), gunakan operasi baris untuk menghasilkan array matrik dengan bentuk dibawah ini. Lakukan tahapan demi tahapan dan cetak lagi hasil Anda untuk memeriksa apakah Anda berhasil.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{cccc} 1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 2 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 9:</strong> Ulangi <strong>Contoh 2</strong> menggunakan modul <span class="math notranslate nohighlight">\(\texttt{random}\)</span> untuk menghasilkan array <span class="math notranslate nohighlight">\(3\times 4\)</span> yang terdiri dari bilangan riel acak, bukan bilangan bulat acak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 10:</strong> Tulis perulangan yang akan mengeksekusi kode eliminasi dalam <strong>Contoh 2</strong> pada 1000 array <span class="math notranslate nohighlight">\(3\times 4\)</span> yang berbeda dari bilangan acak riel untuk melihat seberapa sering gagalnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Koding disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "moelaab/alin",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Sistem_Linier.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sistem Linier</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Solusi_Sistem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Memecahkan Sistem persaman menggunakan Eliminasi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-1-operasi-baris-dan-eliminasi">Contoh 1:  Operasi baris dan eliminasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-2-eliminasi-pada-array-acak">Contoh 2:  Eliminasi pada array acak</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-3-menentukan-pivot">Contoh 3: Menentukan pivot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-4-eliminasi-yang-gagal">Contoh 4:  Eliminasi yang gagal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-5-penyelesaian-tidak-tunggal">Contoh 5:  Penyelesaian tidak tunggal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vlad and Donald
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

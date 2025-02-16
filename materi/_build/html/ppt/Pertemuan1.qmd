@@ -1,0 +1,99 @@
+---
+title: Pengantar Komputasi Aljabar Linier
+subtitle:  Mulaab M - Teknik Informatika - Universitas Trunojoyo Madura
+title-slide-attributes:
+  data-background-size: contain
+  data-background-opacity: "0.5"
+
+format: revealjs
+editor: visual
+---
+
+## Diskripsi Mata Kuliah Komputasi Aljabar Linier
+
+Kuliah ini membahas tentang teori matriks dan aljabar linier, dan mengkaji beberapa implementasi dalam disiplin ilmu lain terutama untuk sain data. Aljabar linier adalah salah satu cabang matematika yang mempelajari sistem persamaan linier dan sifat-sifat matriks. Konsep aljabar linier sangat berguna dalam fisika, ilmu ekonomi dan sosial, ilmu alam, dan teknik. Karena penerapannya yang luas, maka aljabar linier adalah salah satu mata pelajaran yang sangat perlu untuk dipelajari lebih mendalam.
+
+## Materi Kuliah
+
+Berikut adalah materi utama dalam Komputasi Aljabar Linier:
+
+-   Vektor dan Matrik
+    -   **Vektor**: Konsep dasar vektor dalam ruang vektor, operasi dasar (penjumlahan, perkalian skalar).
+    -   **Matriks**: Representasi data dalam bentuk tabel dua dimensi yang terdiri dari elemen-elemen yang dapat dioperasikan.
+    -   **Operasi Matriks**: Penjumlahan, perkalian, invers, transpos, determinan, dan sifat-sifat matriks.
+    -   Matrik untuk Transformasi Linier, Matrik Transisi, Aplikasi Transformsi
+    -   Ruang Vector , Subruang dari Ruang Vektor, Spanning Sets dan Kebebasan Linier
+
+## Materi Kuliah (2)
+
+-   **Determinan Matrik**: suatu nilai skalar yang dapat dihitung dari sebuah matriks persegi (matriks yang memiliki jumlah baris dan kolom yang sama) dan memiliki banyak aplikasi dalam aljabar linier, termasuk dalam menentukan apakah suatu sistem persamaan linier memiliki solusi unik, menghitung volume dalam geometri, serta dalam berbagai algoritma komputasi.nisi Determinan
+
+    -   Sifat sifat determinan,
+
+    -   Metode Menghitung Determinan
+
+    -   Aplikasi determinan
+
+## Materi Kuliah (3)
+
+-   **Sistem Persamaan Linier (SPL)**: Penyelesaian sistem persamaan linier menggunakan berbagai metode seperti:
+
+    -   **Eliminasi Gauss** dan **Eliminasi Gauss-Jordan**.
+
+    -   **Dekomposisi LU** (dekomposisi matriks ke dalam bentuk matriks lower dan upper).
+
+    -   **Metode Iterasi**: seperti **Metode Gauss-Seidel** dan **Metode Jacobi**.
+
+    -   **Metode Matriks Invers**: jika matriks koefisiennya memiliki invers.
+
+    -   **Metode Determinan**: Penyelesaian dengan Cramer’s Rule (jika matriks koefisiennya persegi)
+
+## Materi Kuliah (4)
+
+-   **Eigenvalue** dan **Eigenvector**
+
+    -   **Eigenvalue** dan **Eigenvector**: Pemahaman tentang nilai eigen dan vektor eigen, serta aplikasinya dalam berbagai disiplin ilmu (misalnya, sains data).
+
+    -   **Dekomposisi Eigen**: Proses untuk menemukan eigenvalue dan eigenvector dari suatu matriks dan aplikasi dekomposisi eigen (misalnya, dalam analisis statistik atau pemrosesan citra).
+
+    -   **Metode Numerik**: Algoritma untuk menemukan nilai eigen dan vektor eigen, seperti metode iterasi Power dan metode QR.
+
+## Materi Kuliah (5)
+
+-   Decomposisi Matriks
+
+    -   **Dekomposisi LU**: Pembagian matriks menjadi dua matriks, satu berbentuk lower triangular dan yang lainnya upper triangular.
+
+    -   **Dekomposisi QR**: Pembagian matriks menjadi hasil perkalian matriks orthogonal (Q) dan matriks segitiga atas (R).
+
+    -   **Singular Value Decomposition (SVD)**: Dekomposisi matriks menjadi tiga matriks, dengan aplikasi dalam pengolahan sinyal, pengurangan dimensi (misalnya dalam PCA), dan sistem rekomendasi.
+
+## Materi Kuliah (6)
+
+-   **Metode Numerik dalam Aljabar Linier**
+
+    -   **Metode Iterasi**: Algoritma seperti metode Jacobi, Gauss-Seidel, dan metode konjugat gradien digunakan untuk menyelesaikan sistem persamaan linier besar.
+
+## Ketentuan Kuliah
+
+-   **Mahasiswa harus membawa Laptop**
+
+-   **Dilarang terlambat**
+
+-   Mahasiswa harus mempunyai repositori materik kuliah Komputasi Aljabar Linier di github dengan content materi kuliah Komputasi Aljabar Linier dan tugas yang diberikan
+
+-   Mempunya akun trinket.io
+
+
+## Contoh program
+
+```{=html}
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h4 class="card-title">Primary card title</h4>
+    <iframe src="https://trinket.io/embed/python3/c77114ff8c" width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+  </div>
+</div>
+```
+

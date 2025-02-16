@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matrik Invers &#8212; Physics tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "moelaab/alin");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Matrik_Inverse';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Faktorisasi LU" href="Faktorisasi_LU.html" />
+    <link rel="prev" title="Memecahkan Sistem persaman menggunakan Eliminasi" href="Solusi_Sistem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Pengantar.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Physics tutorials - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Physics tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Pengantar.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Sistem_Linier.html">Sistem Linier</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Eliminasi_Gaussian.html">Eliminasi Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Solusi_Sistem.html">Memecahkan Sistem persaman menggunakan Eliminasi</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Matrik Invers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Faktorisasi_LU.html">Faktorisasi LU</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin/issues/new?title=Issue%20on%20page%20%2FMatrik_Inverse.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Matrik_Inverse.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matrik Invers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matrik-inverse">Membentuk matrik inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invers-satu-sisi">Invers satu sisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-invers-dengan-scipy">Matrik Invers dengan SciPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="matrik-invers">
+<h1>Matrik Invers<a class="headerlink" href="#matrik-invers" title="Link to this heading">#</a></h1>
+<p>Pada bagian ini kita membahas matriks invers dan menjelaskan metode yang umum digunakan untuk membentuk matrik tersebut.</p>
+<p>Oleh karena itu,  mari kita perhatikan kembali sistem persamaan linear yang ditulis dalam bentuk matriks.</p>
+<div class="math notranslate nohighlight">
+\[
+AX = B
+\]</div>
+<p>Sekali lagi, <span class="math notranslate nohighlight">\(A\)</span> adalah matriks koefisien yang diketahui, <span class="math notranslate nohighlight">\(B\)</span> adalah vektor dari data yang diketahui, dan <span class="math notranslate nohighlight">\(X\)</span> adalah vektor yang tidak diketahui. Jika <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, dan <span class="math notranslate nohighlight">\(X\)</span> adalah bilangan, kita akan segera mengetahui penyelesaiannya untuk <span class="math notranslate nohighlight">\(X\)</span>  dengan cara  membagi kedua ruas persamaan dengan <span class="math notranslate nohighlight">\(A\)</span>, asalkan <span class="math notranslate nohighlight">\(A\neq0\)</span>. Pertanyaan adalah <em>Dapatkah kita melakukan pembagian matriks?</em></p>
+<p>Jawabannya tidak. Namun kita dapat  memahami bahwa jika <span class="math notranslate nohighlight">\(A\)</span>,<span class="math notranslate nohighlight">\(B\)</span>, dan <span class="math notranslate nohighlight">\(X\)</span> adalah bilangan, kita membuat penyelesaiannya dengan mengalikannya dengan <span class="math notranslate nohighlight">\(1/A\)</span>. Kita hanya perlu mencari bilangan yang jika dikalikan dengan <span class="math notranslate nohighlight">\(A\)</span> menghasilkan 1. Bilangan ini disebut invers perkalian dari <span class="math notranslate nohighlight">\(A\)</span> dan ditulis sebagai <span class="math notranslate nohighlight">\(1/A\)</span>, asalkan <span class="math notranslate nohighlight">\(A\neq 0\)</span>.</p>
+<p>Kita dapat memperluas ide ini pada situasi di mana <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, dan <span class="math notranslate nohighlight">\(X\)</span> adalah matriks. Untuk menyelesaikan sistem <span class="math notranslate nohighlight">\(AX=B\)</span>, kita perlu mengalikannya dengan matriks tertentu, yang bila dikalikan dengan <span class="math notranslate nohighlight">\(A\)</span> akan menghasilkan matriks identitas <span class="math notranslate nohighlight">\(I\)</span>. Matriks ini dikenal sebagai <strong>matriks invers</strong>, dan diberi simbol <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<p>Jika <span class="math notranslate nohighlight">\(A\)</span> adalah matriks bujursangkar, kita mendefinisikan <span class="math notranslate nohighlight">\(A^{-1}\)</span> (dibaca sebagai “A invers”) sebagai matriks sehingga pernyataan berikut ini benar.</p>
+<div class="math notranslate nohighlight">
+\[
+A^{-1}A = I \hspace{3cm}AA^{-1} = I
+\]</div>
+<p>Catatan tentang invers matrik :</p>
+<ol class="arabic simple">
+<li><p>Matriksnya harus berbentuk bujur sangkar agar definisi ini masuk akal. Jika <span class="math notranslate nohighlight">\(A\)</span> bukan bujursangkar, maka tidak mungkin keduanya
+<span class="math notranslate nohighlight">\(A^{-1}A\)</span> dan <span class="math notranslate nohighlight">\(AA^{-1}\)</span> .</p></li>
+<li><p>Tidak semua matriks mempunyai invers. Matriks yang mempunyai invers disebut matriks **<strong>invertible</strong>. Matriks yang tidak memiliki invers disebut matriks <strong>non-invertible</strong>, atau matrik <strong>singular</strong>.</p></li>
+<li><p>Jika suatu matriks memiliki invers, maka inversnya unik.</p></li>
+</ol>
+<p>Sekarang <em>jika kita mengetahui</em> <span class="math notranslate nohighlight">\(A^{-1}\)</span>, kita dapat menyelesaikan sistem <span class="math notranslate nohighlight">\(AX=B\)</span> dengan mengalikan kedua ruas dengan <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+A^{-1}AX = A^{-1}B
+\]</div>
+<p>Maka <span class="math notranslate nohighlight">\(A^{-1}AX = IX = X\)</span>, jadi penyelesaian sistemnya adalah <span class="math notranslate nohighlight">\(X=A^{-1}B\)</span>. Sayangnya, biasanya tidak mudah untuk menemukan <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<section id="membentuk-matrik-inverse">
+<h2>Membentuk matrik inverse<a class="headerlink" href="#membentuk-matrik-inverse" title="Link to this heading">#</a></h2>
+<p>Misalkan  <span class="math notranslate nohighlight">\(C\)</span> adalah  matrix, dan bagaimana kita akan membentuk matrik invers</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \left[ \begin{array}{rrrr} 1 &amp; 0 &amp; 2 &amp; -1 \\ 3 &amp; 1 &amp; -3 &amp; 2 \\ 2 &amp; 0 &amp; 4 &amp; 4 \\ 2 &amp; 1 &amp; -1 &amp; -1 \end{array}\right]
+\end{split}\]</div>
+<p>Mari kita bayangkan hasil kali matriks <span class="math notranslate nohighlight">\(CC^{-1}= I\)</span> dalam bentuk kolom <span class="math notranslate nohighlight">\(C^{-1}\)</span>. Kami memfokuskan pada kolom ketiga sebagai contoh, dan memberi tanda pada elemen-elemen yang tidak diketahui tersebut dengan <span class="math notranslate nohighlight">\(y_i\)</span>. Elemen * juga tidak diketahui, tetapi kami akan mengabaikannya untuk saat ini.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+CC^{-1}=
+\left[ \begin{array}{rrrr} 1 &amp; 0 &amp; 2 &amp; -1 \\ 3 &amp; 1 &amp; -3 &amp; 2 \\ 2 &amp; 0 &amp; 4 &amp; 4 \\ 2 &amp; 1 &amp; -1 &amp; -1 \end{array}\right]
+\left[ \begin{array}{rrrr} * &amp; * &amp; y_1&amp; * \\ * &amp; * &amp; y_2 &amp; * \\ * &amp; * &amp; y_3 &amp; * \\ * &amp; * &amp; y_4 &amp; *  \end{array}\right]=
+\left[ \begin{array}{rrrr} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right]=
+I
+\end{split}\]</div>
+<p>Ingat sekarang bahwa <span class="math notranslate nohighlight">\(C\)</span> dikalikan dengan kolom ketiga dari <span class="math notranslate nohighlight">\(C^{-1}\)</span> menghasilkan kolom ketiga dari <span class="math notranslate nohighlight">\(I\)</span>. Ini merupakan sistem linier untuk menyelesaikan <span class="math notranslate nohighlight">\(y_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[ \begin{array}{rrrr} 1 &amp; 0 &amp; 2 &amp; -1 \\ 3 &amp; 1 &amp; -3 &amp; 2 \\ 2 &amp; 0 &amp; 4 &amp; 4 \\ 2 &amp; 1 &amp; -1 &amp; -1 \end{array}\right]
+\left[ \begin{array}{r}  y_1 \\  y_2  \\ y_3 \\ y_4  \end{array}\right]=
+\left[ \begin{array}{r}  0 \\  0  \\ 1 \\ 0  \end{array}\right]
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">laguide</span> <span class="k">as</span> <span class="nn">lag</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Solve CY = I3</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">I3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Y3</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">SolveSystem</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">I3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.16666667]
+ [ 0.66666667]
+ [ 0.16666667]
+ [ 0.16666667]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kolom lain dari <span class="math notranslate nohighlight">\(C^{-1}\)</span> dapat ditemukan dengan menyelesaikan sistem serupa dengan kolom matriks identitas yang sesuai. Kita kemudian dapat membangun <span class="math notranslate nohighlight">\(C^{-1}\)</span> dengan merangkai kolom menjadi satu matriks, dan menguji hasilnya dengan memeriksa produk <span class="math notranslate nohighlight">\(C^{-1}C\)</span> dan <span class="math notranslate nohighlight">\(CC^{-1}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">I2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">I4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">Y1</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">SolveSystem</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">I1</span><span class="p">)</span>
+<span class="n">Y2</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">SolveSystem</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">I2</span><span class="p">)</span>
+<span class="n">Y4</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">SolveSystem</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">I4</span><span class="p">)</span>
+
+<span class="n">C_inverse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Y3</span><span class="p">,</span><span class="n">Y4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C inverse:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">C_inverse</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C inverse times C:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">C_inverse</span><span class="nd">@C</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C times C inverse:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">C</span><span class="nd">@C_inverse</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C inverse:
+[[ 0.83333333  0.5        -0.16666667 -0.5       ]
+ [-2.08333333 -1.25        0.66666667  2.25      ]
+ [-0.08333333 -0.25        0.16666667  0.25      ]
+ [-0.33333333  0.          0.16666667  0.        ]]
+
+C inverse times C:
+[[ 1.00000000e+00  0.00000000e+00 -1.11022302e-16  1.11022302e-16]
+ [ 0.00000000e+00  1.00000000e+00  0.00000000e+00  4.44089210e-16]
+ [ 5.55111512e-17  0.00000000e+00  1.00000000e+00 -5.55111512e-17]
+ [ 0.00000000e+00  0.00000000e+00  0.00000000e+00  1.00000000e+00]]
+
+C times C inverse:
+[[ 1.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00]
+ [-1.11022302e-16  1.00000000e+00  5.55111512e-17  0.00000000e+00]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00  0.00000000e+00]
+ [-3.33066907e-16  0.00000000e+00  1.11022302e-16  1.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mirip dengan keadaan sebelumnya, beberapa elemen yang seharusnya nol ternyata tidak sepenuhnya nol karena kesalahan pembulatan. Sekali lagi, kita dapat menampilkan versi bulat untuk membaca hasilnya dengan lebih mudah.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">C</span><span class="nd">@C_inverse</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.  0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Selanjutnya kita akan menulis fungsi Python untuk mendapatkan invers matriks. Dalam praktiknya, mencari invers suatu matriks adalah cara yang sangat tidak efisien dalam menyelesaikan sistem linier. Kita harus menyelesaikan sistem sebanyak <span class="math notranslate nohighlight">\(n\)</span> hanya untuk mencari invers dari matriks <span class="math notranslate nohighlight">\(n \times n\)</span>, sehingga terlihat bahwa dibutuhkan <span class="math notranslate nohighlight">\(n\)</span> kali  yang diperlukan untuk menyelesaikan sistem dengan eliminasi. Namun misalkan kita perlu menyelesaikan sistem linier <span class="math notranslate nohighlight">\(AX=B\)</span> untuk dengan vektor berbeda  <span class="math notranslate nohighlight">\(B\)</span>, tetapi matriks koefisiennya sama <span class="math notranslate nohighlight">\(A\)</span>. Mungkin ini sangat menguntungkan untuk membentuk <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<p>Untuk menjaga komputasi tetap efisien, kami ingin menghindari pengulangan operasi baris sebanyak mungkin. Untuk membuat <span class="math notranslate nohighlight">\(A^{-1}\)</span> kita perlu menyelesaikan sistem <span class="math notranslate nohighlight">\(AX_i=Y_i\)</span>, dengan <span class="math notranslate nohighlight">\(Y_i\)</span> adalah kolom ke <span class="math notranslate nohighlight">\(i\)</span> dari <span class="math notranslate nohighlight">\(I\)</span>. Ini akan menghasilkan <span class="math notranslate nohighlight">\(X\)</span>, yang merupakan kolom <span class="math notranslate nohighlight">\(i\)</span>th dari <span class="math notranslate nohighlight">\(A^{-1}\)</span>. Daripada melakukan eliminasi pada setiap matriks <span class="math notranslate nohighlight">\([A|Y_i]\)</span> yang diperbesar, kita dapat menambah <span class="math notranslate nohighlight">\(A\)</span> dengan seluruh matriks <span class="math notranslate nohighlight">\(I\)</span> dan melakukan operasi yang diperlukan pada semua <span class="math notranslate nohighlight">\(Y_i\)</span> secara bersamaan. Misalnya, jika <span class="math notranslate nohighlight">\(A\)</span> adalah matriks <span class="math notranslate nohighlight">\(4\times 4\)</span>, kita akan memiliki matriks augmented berikut</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+[A|I] = \left[ \begin{array}{rrrr|rrrr}
+* &amp; * &amp; * &amp; * &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+* &amp; * &amp; * &amp; * &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+* &amp; * &amp; * &amp; * &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+* &amp; * &amp; * &amp; * &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Jika <span class="math notranslate nohighlight">\(A\)</span> dapat dinverskan, modul <span class="math notranslate nohighlight">\(\texttt{RowReduction}\)</span> dari bagian sebelumnya akan menghasilkan matriks dengan bentuk seperto  berikut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+[A|I] = \left[ \begin{array}{rrrr|rrrr}
+* &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; 0 &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; 0 &amp; 0 &amp; * &amp; * &amp; * &amp; * &amp; * \\
+\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Kita dapat menggunakan lagi fungsi <span class="math notranslate nohighlight">\(\texttt{BackSubstitution}\)</span> untuk setiap kolom disebelah kanan matrik</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Inverse</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c1"># =============================================================================</span>
+    <span class="c1"># A is a NumPy array that represents a matrix of dimension n x n.</span>
+    <span class="c1"># Inverse computes the inverse matrix by solving AX=I where I is the identity.</span>
+    <span class="c1"># If A is not invertible, Inverse will not return correct results.</span>
+    <span class="c1"># =============================================================================</span>
+
+    <span class="c1"># Check shape of A</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inverse accepts only square arrays.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># n is number of rows and columns in A</span>
+
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># The augmented matrix is A together with all the columns of I.  RowReduction is</span>
+    <span class="c1"># carried out simultaneously for all n systems.</span>
+    <span class="n">A_augmented</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">A</span><span class="p">,</span><span class="n">I</span><span class="p">))</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">RowReduction</span><span class="p">(</span><span class="n">A_augmented</span><span class="p">)</span>
+
+    <span class="n">Inverse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="c1"># Now BackSubstitution is carried out for each column and the result is stored</span>
+    <span class="c1"># in the corresponding column of Inverse.</span>
+    <span class="n">A_reduced</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">B_reduced</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="p">:</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">Inverse</span><span class="p">[:,</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">BackSubstitution</span><span class="p">(</span><span class="n">A_reduced</span><span class="p">,</span><span class="n">B_reduced</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">Inverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Inverse</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.83333333  0.5        -0.16666667 -0.5       ]
+ [-2.08333333 -1.25        0.66666667  2.25      ]
+ [-0.08333333 -0.25        0.16666667  0.25      ]
+ [-0.33333333  0.          0.16666667  0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jika suatu matriks tidak dapat diinverskan maka proses di atas gagal. Kita harus menyadari bahwa dalam modul <span class="math notranslate nohighlight">\(\texttt{BackSubstitution}\)</span> kita membagi elemen sepanjang diagonal utama matriks segitiga atas. Ingatlah bahwa entri-entri ini berada pada posisi pivot yang sangat penting. Jika terdapat angka nol pada paling sedikit satu posisi pivot, maka matriks tersenit  tidak dapat diinverskan.</p>
+<p>Misalkan  setelah melakukan <span class="math notranslate nohighlight">\(\texttt{RowReduction}\)</span> pada matriks augmented <span class="math notranslate nohighlight">\([A|I]\)</span> dalam modul <span class="math notranslate nohighlight">\(\texttt{Inverse}\)</span>, hasilnya adalah sebagai berikut.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+[A|I] = \left[ \begin{array}{rrrr|rrrr}
+* &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; 0 &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; 0 &amp; * &amp; * &amp; * &amp; * &amp; * &amp; * \\
+0 &amp; 0 &amp; 0 &amp; * &amp; * &amp; * &amp; * &amp; * \\
+\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Dalam hal ini <span class="math notranslate nohighlight">\( \texttt {BackSubstitution}\)</span> akan gagal karena angka nol pada posisi pivot baris kedua. Oleh karena itu, <span class="math notranslate nohighlight">\(A^{-1}\)</span> tidak ada dan kita dapat menyimpulkan bahwa <span class="math notranslate nohighlight">\(A\)</span> tidak dapat diinverskan.</p>
+<p>Secara umum kita menentukan apakah suatu matriks dapat diinverskan dengan melakukan langkah-langkah eliminasi dan memeriksa entri-entri pada diagonal utama dari matriks segitiga atas tersebut. Matriks  dapat diinverskan jika dan hanya jika semua elemennya tidak nol</p>
+</section>
+<section id="invers-satu-sisi">
+<h2>Invers satu sisi<a class="headerlink" href="#invers-satu-sisi" title="Link to this heading">#</a></h2>
+<p>Jika suatu matriks tidak berbentuk bujur sangkar, maka matriks tersebut tidak dapat dianggap dapat diinverskan menurut definisi di atas. Namun akan berguna untuk mempertimbangkan invers satu sisi. Jika <span class="math notranslate nohighlight">\(A\)</span> adalah matriks <span class="math notranslate nohighlight">\(m\times n\)</span>, kita katakan bahwa matriks <span class="math notranslate nohighlight">\(F\)</span> adalah <strong>invers kanan</strong> dari <span class="math notranslate nohighlight">\(A\)</span> jika <span class="math notranslate nohighlight">\(AF=I_m\)</span>. Demikian pula, kita mengatakan bahwa matriks <span class="math notranslate nohighlight">\(G\)</span> adalah <strong>invers kiri</strong> dari <span class="math notranslate nohighlight">\(A\)</span> jika <span class="math notranslate nohighlight">\(GA=I_n\)</span>. Perhatikan di sini bahwa invers kanan <span class="math notranslate nohighlight">\(F\)</span> dan invers kiri <span class="math notranslate nohighlight">\(G\)</span> adalah matriks <span class="math notranslate nohighlight">\(n\times m\)</span>, <span class="math notranslate nohighlight">\(I_m\)</span> adalah matriks identitas <span class="math notranslate nohighlight">\(m\times m\)</span>, dan <span class="math notranslate nohighlight">\(I_n\)</span> adalah <span class="math notranslate nohighlight">\(n\times n\)</span> matriks identitas.</p>
+<p>Yang menarik untuk dicatat bahwa jika matriks <span class="math notranslate nohighlight">\(A\)</span> memiliki <em>keduanya</em> invers kanan <span class="math notranslate nohighlight">\(F\)</span> dan invers kiri <span class="math notranslate nohighlight">\(G\)</span> maka keduanya harus sama karena</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+F = I_nF = (GA)F = G(AF) = GI_m = G.
+\end{equation}
+\]</div>
+<p>Invers satu sisi juga berhubungan dengan solusi sistem linier <span class="math notranslate nohighlight">\(AX=B\)</span>. Jika <span class="math notranslate nohighlight">\(A\)</span> memiliki invers kanan <span class="math notranslate nohighlight">\(F\)</span> maka sistem harus memiliki <em>setidaknya</em> satu solusi, <span class="math notranslate nohighlight">\(X = FB\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+AX = A(FB) = (AF)B = IB = B
+\end{equation}
+\]</div>
+<p>Kita akan melihat nanti bahwa sistem <span class="math notranslate nohighlight">\(AX=B\)</span> memiliki <em>paling banyak</em> satu solusi ketika <span class="math notranslate nohighlight">\(A\)</span> memiliki invers kiri.</p>
+</section>
+<section id="matrik-invers-dengan-scipy">
+<h2>Matrik Invers dengan SciPy<a class="headerlink" href="#matrik-invers-dengan-scipy" title="Link to this heading">#</a></h2>
+<p>Fungsi <span class="math notranslate nohighlight">\(\texttt{inv}\)</span> digunakan untuk menghitung matriks invers dalam modul SciPy <span class="math notranslate nohighlight">\(\texttt{linalg}\)</span>. Setelah modul diimpor, penggunaan <span class="math notranslate nohighlight">\(\texttt{inv}\)</span> sama persis dengan fungsi yang baru saja kita buat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">sla</span>
+
+<span class="n">C_inverse</span> <span class="o">=</span> <span class="n">sla</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C_inverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.83333333  0.5        -0.16666667 -0.5       ]
+ [-2.08333333 -1.25        0.66666667  2.25      ]
+ [-0.08333333 -0.25        0.16666667  0.25      ]
+ [-0.33333333  0.          0.16666667  0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Memberikan matriks yang tidak dapat diinverskan ke <span class="math notranslate nohighlight">\(\texttt{inv}\)</span> akan menghasilkan kesalahan yang dimunculkan oleh interpreter Python.</p>
+</section>
+<section id="latihan">
+<h2>Latihan<a class="headerlink" href="#latihan" title="Link to this heading">#</a></h2>
+<p><strong>Latihan 1:</strong> Selesaikan sistem persamaan berikut dengan menggunakan matrik invers</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+2x_1 + 3x_2 + x_3 &amp; = &amp; 4\\
+3x_1 + 3x_2 + x_3 &amp; = &amp; 8\\
+2x_1 + 4x_2 + x_3 &amp; = &amp; 5
+\end{eqnarray*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 2:</strong> Misalkan <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> adalah dua matriks acak <span class="math notranslate nohighlight">\(4\times 4\)</span>. Tunjukkan dengan menggunakan Python bahwa <span class="math notranslate nohighlight">\((AB)^{-1}=B^{-1}A^{-1}\)</span> .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 3:</strong> Jelaskan mengapa <span class="math notranslate nohighlight">\((AB)^{-1}=B^{-1}A^{-1}\)</span> dengan menggunakan definisi yang diberikan di bagian ini.</p>
+<p><strong>Latihan 4:</strong> Selesaikan sistem <span class="math notranslate nohighlight">\(AX=B\)</span> dengan mencari <span class="math notranslate nohighlight">\(A^{-1}\)</span> dan menghitung <span class="math notranslate nohighlight">\(X=A^{-1}B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \left[ \begin{array}{rrrr} 1 &amp; 2 &amp; -3 \\ -1 &amp; 1 &amp; -1  \\ 0 &amp; -2 &amp; 3  \end{array}\right] \quad\quad
+B = \left[ \begin{array}{rrrr} 1  \\ 1 \\ 1  \end{array}\right]
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 5:</strong> Carilah matriks <span class="math notranslate nohighlight">\(3 \times 3 \)</span> <span class="math notranslate nohighlight">\(Y\)</span> sehingga <span class="math notranslate nohighlight">\(AY = C\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \left[ \begin{array}{rrrr} 3 &amp; 1 &amp; 0 \\ 5 &amp; 2 &amp; 1 \\ 0 &amp; 2 &amp; 3\end{array}\right]\hspace{2cm}
+C = \left[ \begin{array}{rrrr} 1 &amp; 2 &amp; 1 \\ 3 &amp; 4 &amp; 0 \\ 1 &amp; 0 &amp; 2 \end{array}\right]\hspace{2cm}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 6:</strong> Misalkan <span class="math notranslate nohighlight">\(A\)</span> adalah matriks acak <span class="math notranslate nohighlight">\(4 \times 1\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> adalah matriks acak <span class="math notranslate nohighlight">\(1 \times 4 \)</span>. Gunakan Python untuk menunjukkan bahwa hasil kali <span class="math notranslate nohighlight">\(AB\)</span> tidak dapat dibalik. Apakah  ini berlaku untuk dua matriks <span class="math notranslate nohighlight">\(P\)</span> dan <span class="math notranslate nohighlight">\(Q\)</span> sehingga <span class="math notranslate nohighlight">\(P\)</span> adalah matriks <span class="math notranslate nohighlight">\( n \times 1 \)</span> dan <span class="math notranslate nohighlight">\(Q\)</span> adalah matriks <span class="math notranslate nohighlight">\( 1 \times n\)</span> ? Jelaskan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 7:</strong> Misalkan <span class="math notranslate nohighlight">\(A\)</span> adalah matriks acak <span class="math notranslate nohighlight">\(3 \times 3\)</span>. Tunjukkan menggunakan Python bahwa <span class="math notranslate nohighlight">\((A^T)^{-1} = (A^{-1})^T\)</span>. Gunakan karakteristik ini untuk menjelaskan mengapa <span class="math notranslate nohighlight">\(A^{-1}\)</span> harus simetris jika <span class="math notranslate nohighlight">\(A\)</span> simetris.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "moelaab/alin",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Solusi_Sistem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Memecahkan Sistem persaman menggunakan Eliminasi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Faktorisasi_LU.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Faktorisasi LU</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membentuk-matrik-inverse">Membentuk matrik inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invers-satu-sisi">Invers satu sisi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-invers-dengan-scipy">Matrik Invers dengan SciPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vlad and Donald
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

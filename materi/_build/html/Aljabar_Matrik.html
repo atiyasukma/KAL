@@ -1,0 +1,1646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matrix Algebra &#8212; Physics tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "moelaab/alin");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Aljabar_Matrik';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Pengantar.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Physics tutorials - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Physics tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Pengantar.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Sistem_Linier.html">Sistem Linier</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Eliminasi_Gaussian.html">Eliminasi Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Solusi_Sistem.html">Memecahkan Sistem persaman menggunakan Eliminasi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matrik_Inverse.html">Matrik Invers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Faktorisasi_LU.html">Faktorisasi LU</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin/issues/new?title=Issue%20on%20page%20%2FAljabar_Matrik.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Aljabar_Matrik.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matrix Algebra</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-operasi-matrik">Operasi-operasi matrik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-menemukan-dua-matrik-bersifat-komutatif">Cara menemukan dua matrik bersifat komutatif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-transpose">Matrik Transpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-elementer">Matrik elementer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-invers">Matrik Invers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-matrik-invers">Karakteristik matrik invers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-untuk-sistem-linier">Aplikasi untuk sistem linier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-identitas">Matrik identitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-vektor-matrik">Perkalian Vektor-Matrik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-matrik-dengan-kolom-kolom">Perkalian matrik dengan kolom-kolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="matrix-algebra">
+<h1>Matrix Algebra<a class="headerlink" href="#matrix-algebra" title="Link to this heading">#</a></h1>
+<p>Pada bagian ini kita melihat Aljabar Matriks dan beberapa sifat umumnya. Kita juga akan melihat bagaimana operasi yang melibatkan matriks dihubungkan dengan sistem persamaan linier.</p>
+<p><strong>matriks</strong> a adalah larik bilangan dua dimensi. Saat kita melakukan komputasi dengan matriks menggunakan NumPy, kita akan menggunakan array seperti yang kita lakukan sebelumnya. Mari kita tuliskan beberapa contoh matriks dan beri nama.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+A = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] \hspace{1cm}
+B = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right] \hspace{1cm}
+C = \left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right] \hspace{1cm}
+D = \left[ \begin{array}{r} 2 \\ 6 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Saat mendiskusikan matriks, kita biasanya membicarakan dimensi, atau bentuknya, dengan menentukan jumlah baris dan kolom. Jumlah baris biasanya dicantumkan terlebih dahulu. Sebagai contoh, <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(C\)</span> adalah matriks <span class="math notranslate nohighlight">\(2\times 2\)</span>, <span class="math notranslate nohighlight">\(B\)</span> adalah matriks <span class="math notranslate nohighlight">\(2 \times 3\)</span>, dan <span class="math notranslate nohighlight">\(D\)</span> adalah matriks <span class="math notranslate nohighlight">\(2 \times 1 \)</span>. Matriks yang hanya memiliki 1 kolom, seperti <span class="math notranslate nohighlight">\(D\)</span>, biasa disebut <strong>vektor</strong>. Kita juga akan mematuhi konvensi ini, namun perlu diingat bahwa ketika kita membuat pernyataan tentang matriks, kita juga membuat pernyataan tentang vektor meskipun kita tidak menyebutkannya secara eksplisit. Kita juga akan mengadopsi konvensi umum penggunaan huruf besar untuk memberi nama matriks.</p>
+<p>Penting juga untuk membicarakan entri individual matriks. Notasi umum untuk ini adalah huruf kecil dengan subskrip untuk menunjukkan posisi entri dalam matriks. Jadi <span class="math notranslate nohighlight">\(b_{12}\)</span> mengacu pada 0 pada baris pertama dan kolom kedua matriks <span class="math notranslate nohighlight">\(B\)</span>. Jika kita berbicara tentang posisi umum, kita mungkin menggunakan variabel di subskrip, seperti <span class="math notranslate nohighlight">\(a_{ij}\)</span>.</p>
+<p>Mari kita buat matriks ini sebagai array NumPy sebelum berdiskusi lebih lanjut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 3]
+ [2 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bagian tersebut akan digunakan  untuk mengakses dimensi array kita. Saat array dibuat, informasi ini disimpan sebagai bagian dari objek array dan dapat diakses dengan metode yang disebut <span class="math notranslate nohighlight">\(\texttt{shape}\)</span>. Jika <span class="math notranslate nohighlight">\(\texttt{B}\)</span> adalah sebuah array, objek <span class="math notranslate nohighlight">\(\texttt{B.shape}\)</span> itu sendiri adalah sebuah array yang memiliki dua nilai masukan. Yang pertama (<em>dengan indeks 0!</em>) adalah jumlah baris, dan yang kedua (<em>dengan indeks 1!</em>) adalah jumlah kolom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3  0  4]
+ [-1 -2  1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array B has&quot;</span><span class="p">,</span><span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;rows.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Array B has&quot;</span><span class="p">,</span><span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot;columns.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array B has 2 rows.
+Array B has 3 columns.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="operasi-operasi-matrik">
+<h2>Operasi-operasi matrik<a class="headerlink" href="#operasi-operasi-matrik" title="Link to this heading">#</a></h2>
+<p>Ada tiga operasi aljabar untuk matriks yang perlu kita lakukan. Untuk definisi kita, misalkan <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(C\)</span> adalah matriks <span class="math notranslate nohighlight">\(m \times n\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(B\)</span> adalah matriks <span class="math notranslate nohighlight">\(n \times k\)</span>, dan <span class="math notranslate nohighlight">\(c\)</span> adalah suatu bilangan. Jika membahas aljabar yang melibatkan matriks dan bilangan, bilangan tersebut biasanya disebut dengan <strong>skalar</strong>.</p>
+<p>Operasi penjumlahan matrik diantaranya seperti berikut:</p>
+<ol class="arabic simple">
+<li><p>Matriks dalam bentuk apa pun dapat dikalikan dengan skalar <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span>. Hasilnya adalah semua elemen matrik dikalikan dengan skalar tersebut. Dengan menggunakan notasi subskrip, kita akan ditulis dengan</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+(cA)_{ij} = ca_{ij}
+\]</div>
+<div class="math notranslate nohighlight">
+\[(c+d)A=cA+d{A}\]</div>
+<div class="math notranslate nohighlight">
+\[c(dA)=(cd)A\]</div>
+<div class="math notranslate nohighlight">
+\[c(A+B)=cA+cB\]</div>
+<div class="math notranslate nohighlight">
+\[ A  \quad \text{terdapat} \quad  \text{- A}, \text{sehingga }  A+(- A)=0 \]</div>
+<ol class="arabic simple" start="2">
+<li><p>Matriks yang <em>ukurannya sama</em> dapat dijumlahkan. Hasilnya adalah semua elemen yang bersesuaian ditambahkan dan ditulis dalam bentuk.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+(A+C)_{ij} = a_{ij} + c_{ij}
+\]</div>
+<div class="math notranslate nohighlight">
+\[A+{0}=A \quad \text{dimana ${0}$ matrik nol}\]</div>
+<div class="math notranslate nohighlight">
+\[A+ B= B+ A\]</div>
+<div class="math notranslate nohighlight">
+\[(A+B)+ C=A+(B+C)\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Jika banyaknya kolom dari matrik <span class="math notranslate nohighlight">\(A\)</span> adalah sama dengan banyaknya baris matrik <span class="math notranslate nohighlight">\(B\)</span>, matrik dapat dikalikan dalam dengan bentuk perkalian  <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>.  Hasilnya adalah matrik <span class="math notranslate nohighlight">\(AB\)</span>, yang memiliki jumlah baris seperti
+jumlah baris matrik <span class="math notranslate nohighlight">\(A\)</span> dan kolom sejumlah kolom matrik <span class="math notranslate nohighlight">\(B\)</span>.  Elemen-elemen <span class="math notranslate nohighlight">\((AB)_{ij}\)</span> adalah kombinasi elemen baris <span class="math notranslate nohighlight">\(i\)</span> dari <span class="math notranslate nohighlight">\(A\)</span> dan kolom <span class="math notranslate nohighlight">\(j\)</span> dari <span class="math notranslate nohighlight">\(B\)</span>.
+$<span class="math notranslate nohighlight">\(
+(AB)_{ij} = \sum_{k=1}^n a_{ik}b_{kj}
+\)</span>$</p></li>
+</ol>
+<p>Karakteristik dari <strong><em>perkalian matrik</em></strong><span class="math notranslate nohighlight">\(A\)</span>,<span class="math notranslate nohighlight">\(B\)</span>,<span class="math notranslate nohighlight">\(C\)</span> dan <span class="math notranslate nohighlight">\(c\)</span> skalar adalah sebagai berikut
+- <span class="math notranslate nohighlight">\( A({BC})=({AB}) C\)</span>
+- <span class="math notranslate nohighlight">\(c({AB})=(cA)B=A(cB)\)</span>
+- <span class="math notranslate nohighlight">\(A(B+ C)={AB}+{AC}\)</span>
+- <span class="math notranslate nohighlight">\((B+C)A={BA}+{CA}\)</span></p>
+<p>Perlu juga dicatat bahwa sifat komutatif umumnya tidak berlaku untuk perkalian matriks. Misalkan <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> keduanya merupakan matriks <span class="math notranslate nohighlight">\(3\times 3\)</span>. <strong>Tidak benar secara umum</strong> bahwa <span class="math notranslate nohighlight">\(AB = BA\)</span>.
+Tetapi ada cara untuk menentukan dua matrik saling komutatif</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sy&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">]])</span>
+<span class="n">A</span> <span class="o">+</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}2 a &amp; 2 b &amp; 2 c\\2 d &amp; 2 e &amp; 2 f\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]])</span>
+<span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="n">A</span> <span class="o">-</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}a - g &amp; b - h &amp; c - i\\d - j &amp; e - k &amp; f - l\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">o</span><span class="p">]])</span>
+<span class="n">A</span>
+<span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}g &amp; h &amp; i\\j &amp; k &amp; l\\m &amp; n &amp; o\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AB</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="p">;</span> <span class="n">AB</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}a g + b j + c m &amp; a h + b k + c n &amp; a i + b l + c o\\d g + e j + f m &amp; d h + e k + f n &amp; d i + e l + f o\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">C</span><span class="o">=</span><span class="n">A</span><span class="o">*</span><span class="n">B</span><span class="p">;</span><span class="n">C</span>
+<span class="n">D</span><span class="o">=</span><span class="n">B</span><span class="o">*</span><span class="n">A</span><span class="p">;</span><span class="n">D</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix([[23, 13], [51, 29]])
+Matrix([[36, 44], [13, 16]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cara-menemukan-dua-matrik-bersifat-komutatif">
+<h2>Cara menemukan dua matrik bersifat komutatif<a class="headerlink" href="#cara-menemukan-dua-matrik-bersifat-komutatif" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">],</span> <span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">]])</span>
+<span class="n">A</span><span class="o">*</span><span class="n">B</span>
+<span class="n">B</span><span class="o">*</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}a e + c f &amp; b e + d f\\a g + c h &amp; b g + d h\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Untuk menunjukkan  <span class="math notranslate nohighlight">\({AB} = {BA}\)</span>, kita perlu membuktikan <span class="math notranslate nohighlight">\({AB} - {BA} = 0\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span> <span class="o">-</span> <span class="n">B</span><span class="o">*</span><span class="n">A</span><span class="p">;</span> <span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}b g - c f &amp; a f - b e + b h - d f\\- a g + c e - c h + d g &amp; - b g + c f\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Itu artinya
+\begin{align}
+b g - c f&amp;=0 \
+a f - b e + b h - d f&amp;=0\</p>
+<ul class="simple">
+<li><p>a g + c e - c h + d g&amp;=0 \</p></li>
+<li><p>b g + c f&amp;=0
+\end{align}</p></li>
+</ul>
+<p>Jika kita menganggap  <span class="math notranslate nohighlight">\(a, b, c, d\)</span> sebagai koefisien sistem, kita mengekstrak augmented matrix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_aug</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d</span> <span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]);</span> <span class="n">A_aug</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; - c &amp; b &amp; 0\\- b &amp; a - d &amp; 0 &amp; b\\c &amp; 0 &amp; - a + d &amp; - c\\0 &amp; c &amp; - b &amp; 0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Melakukan eliminasi  <strong>Gaussian-Jordon</strong> hingga  baris tereduksi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_aug</span><span class="o">.</span><span class="n">rref</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left( \left[\begin{matrix}1 &amp; 0 &amp; - \frac{a}{c} + \frac{d}{c} &amp; -1\\0 &amp; 1 &amp; - \frac{b}{c} &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right], \  \left( 0, \  1\right)\right)\end{split}\]</div>
+</div>
+</div>
+<p>Penyelesaian secara umum adalah
+\begin{align}
+e - \frac{a-d}cg - h &amp;=0\
+f - \frac{b}{c} &amp; =0\
+g &amp;= free\
+h &amp; =free
+\end{align}</p>
+<p>Jika kita tentukan koefisien  <span class="math notranslate nohighlight">\(a = 10, b = 12, c = 20, d = 8\)</span>, atau <span class="math notranslate nohighlight">\( A = \left[\begin{matrix}10 &amp; 12\\20 &amp; 8\end{matrix}\right]\)</span> maka penyelesaiannya secara umum adalah</p>
+<p>\begin{align}
+e - .1g - h &amp;=0\
+f - .6 &amp; =0\
+g &amp;= free\
+h &amp; =free
+\end{align}
+Maka coba memberi penyelesaian jika  <span class="math notranslate nohighlight">\(g = h = 1\)</span>
+\begin{align}
+e  &amp;=1.1\
+f &amp; =.6\
+g &amp;=1 \
+h &amp; =1
+\end{align}
+Dan ini adalah matrik komutatif dari  <strong>commutable matrix of <span class="math notranslate nohighlight">\(A\)</span></strong>, kita notasikan dengan  <span class="math notranslate nohighlight">\( B\)</span>.</p>
+<p><strong>Latihan soal</strong>
+Carilah matrik komutatif dari A ukuran matrik 4 x 4  yang sehingga matrik A<em>B=B</em>A</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">.6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]);</span><span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1.1 &amp; 0.6\\1 &amp; 1\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Now we can see that <span class="math notranslate nohighlight">\({AC}={CA}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">A</span><span class="o">*</span><span class="n">C</span>
+<span class="n">C</span><span class="o">*</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}23.0 &amp; 18.0\\30.0 &amp; 20.0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Operasi ini dikenal  sebagai <strong>perkalian matriks</strong>.</p>
+<p>Marilah kita jelaskan dengan beberapa contoh dari Operasi matrik berikut:</p>
+<ol class="arabic simple">
+<li><p>Perkalian bilangan(skalar) dan matrik:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+3A = 3\left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
+= \left[ \begin{array}{rr} 3 &amp; 9 \\ 6 &amp; 3 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Jumlah dari dua matrik yang sama ukurannnya</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+A + C = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] +
+\left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right]
+= \left[ \begin{array}{rr} -1 &amp; 4 \\ 6 &amp; 2 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Perkalian dari dua matrik:</p></li>
+</ol>
+<p>Contoh perkalian matrik</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+AB = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
+\left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right]
+ = \left[ \begin{array}{rrr} 0 &amp; -6 &amp; 7  \\  5 &amp; -2 &amp; 9  \end{array}\right]
+ \end{equation}
+\end{split}\]</div>
+<p>Untuk memperjelas apa yang terjadi dalam perkalian matriks, mari kita hitung dua elemen secara detail.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+(AB)_{12} &amp; = &amp; 1\times 0 + 3 \times (-2) = -6 \\
+(AB)_{23} &amp; = &amp; 2 \times 4 + 1 \times 1 = 9
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Semua operasi matriks ini ada di NumPy, tetapi kita harus menggunakan simbol <span class="math notranslate nohighlight">\(\texttt{&#64;}\)</span> menggantikan  <span class="math notranslate nohighlight">\(\texttt{*}\)</span> untuk perkalian matriks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="n">sy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">A</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">C</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="nd">@B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 9]
+ [6 3]] 
+
+[[-1  4]
+ [ 6  2]] 
+
+[[ 0 -6  7]
+ [ 5 -2  9]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="nd">@B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="nd">@A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 35 -11 -14]
+ [-28  -7   7]
+ [  3  22  13]]
+
+
+[[ 13  11  -4]
+ [  7  44   4]
+ [  8 -21 -16]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrik-transpose">
+<h2>Matrik Transpose<a class="headerlink" href="#matrik-transpose" title="Link to this heading">#</a></h2>
+<p>Hal  lainnya yang berguna bagi kita adalah transpose matriks. <strong>transpose</strong> matriks <span class="math notranslate nohighlight">\(A\)</span> adalah matriks lain, <span class="math notranslate nohighlight">\(A^T\)</span>, yang merupakan matrik dimana  kolom-kolomnya merupakan baris-baris matrik <span class="math notranslate nohighlight">\(A\)</span>. Untuk membuat <span class="math notranslate nohighlight">\(A^T\)</span>, kita cukup menukar indeks baris dengan indeks kolom untuk setiap elemen-elemen, <span class="math notranslate nohighlight">\(a^T_{ij} = a_{ji}\)</span>. Dua contoh berikut untuk memperjelas pernyataan diatas.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+A = \left[ \begin{array}{rrr} 5 &amp; 4 &amp; 0 \\ 1 &amp; 8 &amp; 3 \\ 6 &amp; 7 &amp; 2\end{array}\right] \hspace{1cm}
+A^T = \left[ \begin{array}{rrr} 5 &amp; 1 &amp; 6 \\ 4 &amp; 8 &amp; 7 \\ 0 &amp; 3 &amp; 2\end{array}\right] \hspace{1cm}
+\end{equation}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+B = \left[ \begin{array}{rrr} 1 &amp; 2 &amp; 7 &amp; 0 \\ 3 &amp; 1 &amp; 5 &amp; 2 \\ 4 &amp; 9 &amp; 8 &amp; 6\end{array}\right] \hspace{1cm}
+B^T = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; 4 \\ 2 &amp; 1 &amp; 9 \\ 7 &amp; 5 &amp; 8 \\ 0 &amp; 2 &amp; 6\end{array}\right] \hspace{1cm}
+\end{equation}
+\end{split}\]</div>
+<p>Objek array NumPy memiliki metode bernama <strong>transpose</strong> untuk tujuan ini.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+<span class="c1">## Note that the tranpose method must be called with (), the same as a function with no arguments.</span>
+<span class="n">A_T</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5 4 0]
+ [1 8 3]
+ [6 7 2]]
+
+
+[[5 1 6]
+ [4 8 7]
+ [0 3 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jika matriks <span class="math notranslate nohighlight">\(A\)</span> sama dengan transposnya sendiri, matriks tersebut mempunyai sifat simetris terhadap diagonal utamanya. Oleh karena itu matriks <span class="math notranslate nohighlight">\(A\)</span> dikatakan <strong>simetris</strong> jika <span class="math notranslate nohighlight">\(A = A^T\)</span>. Dengan cara yang sama, kita dapat mengatakan bahwa <span class="math notranslate nohighlight">\(A\)</span> simetris jika <span class="math notranslate nohighlight">\(a_{ij} = a_{ji}\)</span> untuk setiap elemen <span class="math notranslate nohighlight">\(a_{ij}\)</span> dalam matriks.</p>
+<p>Matriks <span class="math notranslate nohighlight">\(P\)</span> di bawah ini adalah salah satu contohnya.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+P = \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 6 \\ 0 &amp; 3 &amp; 5 \\ 6 &amp; 5 &amp; -2\end{array}\right] \hspace{1cm}
+\end{equation}
+\end{split}\]</div>
+<p>Sama halnya, kita mengatakan bahwa matrik <span class="math notranslate nohighlight">\(A\)</span> adalah <strong>skew-symmetric</strong> jika <span class="math notranslate nohighlight">\(A^T = -A\)</span> (jika <span class="math notranslate nohighlight">\(a_{ij} = -a_{ji}\)</span> untuk setiap elemen <span class="math notranslate nohighlight">\(a_{ij}\)</span> dalam <span class="math notranslate nohighlight">\(A\)</span>). Matrik <span class="math notranslate nohighlight">\(Q\)</span> berikut adalah matrik skew-symmetric.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+Q = \left[ \begin{array}{rrr} 0 &amp; 1 &amp; -4 \\ -1 &amp; 0 &amp; 5 \\ 4 &amp; -5 &amp; 0\end{array}\right] \hspace{1cm}
+\end{equation}
+\end{split}\]</div>
+<p>Karakteristk matrik transpose</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((A^T)^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A+B)^T=A^T+B^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((cA)^T=cA^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((AB)^T=B^TA^T\)</span></p></li>
+</ol>
+<p>Kita dapat menunjukkan karakteristik terakhir  dengan SymPy, tentukan <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span>, kalikan keduanya, lalu ubah urutannya, itu berarti <span class="math notranslate nohighlight">\((AB)^T\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">],</span> <span class="p">[</span><span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]])</span>
+<span class="n">AB</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span>
+<span class="n">AB_tr</span> <span class="o">=</span> <span class="n">AB</span><span class="o">.</span><span class="n">transpose</span><span class="p">();</span> <span class="n">AB_tr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}a g + b j &amp; c g + d j &amp; e g + f j\\a h + b k &amp; c h + d k &amp; e h + f k\\a i + b l &amp; c i + d l &amp; e i + f l\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Ubah urutannya masing-masing, lalu kalikan, yaitu <span class="math notranslate nohighlight">\(B^TA^T\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B_tr_A_tr</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">*</span><span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">B_tr_A_tr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}a g + b j &amp; c g + d j &amp; e g + f j\\a h + b k &amp; c h + d k &amp; e h + f k\\a i + b l &amp; c i + d l &amp; e i + f l\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AB_tr</span> <span class="o">-</span> <span class="n">B_tr_A_tr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+</section>
+<section id="matrik-elementer">
+<h2>Matrik elementer<a class="headerlink" href="#matrik-elementer" title="Link to this heading">#</a></h2>
+<p>Matriks elementer adalah matriks yang dapat diperoleh dari satu operasi baris elementer pada suatu matriks identitas. Seperti:</p>
+<div class="math notranslate nohighlight">
+\[
+\left[\begin{matrix}1 &amp; 0 &amp; 0\cr 0 &amp; 1 &amp; 0\cr 0 &amp; 0 &amp; 1\end{matrix}\right]\ \matrix{R_1\leftrightarrow R_2\cr ~\cr ~}\qquad\Longrightarrow\qquad \left[\begin{matrix}0 &amp; 1 &amp; 0\cr 1 &amp; 0 &amp; 0\cr 0 &amp; 0 &amp; 1\end{matrix}\right]
+\]</div>
+<p>di mana <span class="math notranslate nohighlight">\(R_1\leftrightarrow R_2\)</span> berarti menukar baris <span class="math notranslate nohighlight">\(1\)</span> dan baris <span class="math notranslate nohighlight">\(2\)</span>, dan kita nyatakan matriks yang ditransformasikan sebagai <span class="math notranslate nohighlight">\({E}\)</span>, lalu kalikan <span class="math notranslate nohighlight">\( E\)</span> ke kiri pada matriks <span class="math notranslate nohighlight">\( A\)</span>. Buatlah matrik <span class="math notranslate nohighlight">\(A\)</span> terlebih dahulu</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">randMatrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">percent</span> <span class="o">=</span> <span class="mi">80</span><span class="p">);</span> <span class="n">A</span> <span class="c1"># generate a random matrix with 80% of entries being nonzero</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}74 &amp; 37 &amp; 0\\0 &amp; 71 &amp; 19\\41 &amp; 36 &amp; 19\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Buat matriks elementer dengan <span class="math notranslate nohighlight">\(R_1\leftrightarrow R_2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]);</span><span class="n">E</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; 1 &amp; 0\\1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Yaitu dengan mengalikan <span class="math notranslate nohighlight">\(E\)</span> ke <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(A\)</span> juga mengganti baris <span class="math notranslate nohighlight">\(1\)</span> dan <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">*</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0 &amp; 71 &amp; 19\\74 &amp; 37 &amp; 0\\41 &amp; 36 &amp; 19\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Menambahkan hasil perkalian suatu baris ke baris lain dalam matriks identitas juga menghasilkan matriks elementer.
+$<span class="math notranslate nohighlight">\(
+\left[\begin{matrix}1 &amp; 0 &amp; 0\cr 0 &amp; 1 &amp; 0\cr 0 &amp; 0 &amp; 1\end{matrix}\right]\ \matrix{~\cr ~\cr R_3-7R_1}\qquad\longrightarrow\left[\begin{matrix}1 &amp; 0 &amp; 0\cr 0 &amp; 1 &amp; 0\cr -7 &amp; 0 &amp; 1\end{matrix}\right]
+\)</span>$</p>
+<p>Mari kita verifikasi dengan SymPy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">randMatrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">percent</span> <span class="o">=</span> <span class="mi">80</span><span class="p">);</span> <span class="n">A</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]);</span> <span class="n">E</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-7 &amp; 0 &amp; 1\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">*</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}71 &amp; 24 &amp; 55\\44 &amp; 0 &amp; 65\\-497 &amp; -163 &amp; -298\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Kami juga dapat menunjukkan ini dengan jelas  operasi baris  pada <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EA</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">matrices</span><span class="o">.</span><span class="n">MatrixBase</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">EA</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span><span class="o">=-</span><span class="mi">7</span><span class="o">*</span><span class="n">EA</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">+</span><span class="n">EA</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+<span class="n">EA</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}71 &amp; 24 &amp; 55\\44 &amp; 0 &amp; 65\\-497 &amp; -163 &amp; -298\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Pada bagian selanjutnya, kita akan melihat ringkasan penting dari perkalian matriks elementer adalah bahwa <strong>matriks yang dapat diinverskan</strong> adalah hasil kali dari serangkaian matriks elementer.</p>
+</section>
+<section id="matrik-invers">
+<h2>Matrik Invers<a class="headerlink" href="#matrik-invers" title="Link to this heading">#</a></h2>
+<p>Jika <span class="math notranslate nohighlight">\({AB}={BA}=\mathbf{I}\)</span>, <span class="math notranslate nohighlight">\(B\)</span> disebut invers matriks <span class="math notranslate nohighlight">\(A\)</span>, dilambangkan dengan <span class="math notranslate nohighlight">\(B= A^{-1}\)</span>.</p>
+<p>NumPy memiliki fungsi praktis <code class="docutils literal notranslate"><span class="pre">np.linalg.inv()</span></code> untuk menghitung matriks invers. Buatlah matrik  <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  6.,   1., -13.,  -9.,   3.],
+       [ -5., -14.,  -3.,  10.,  16.],
+       [ 13.,  -9.,   4.,  10.,  13.],
+       [ 20.,   5.,   3., -21., -19.],
+       [-19.,   5., -11.,  23.,   8.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">);</span> <span class="n">Ainv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.01014464, -0.01263389,  0.04600856,  0.02924799,  0.0161636 ],
+       [ 0.04141734, -0.13267997,  0.03463886, -0.09214154, -0.02529588],
+       [-0.03192687, -0.05033892,  0.01305128, -0.06000397, -0.05106734],
+       [-0.0351626 ,  0.0225267 ,  0.02597012,  0.05656958,  0.0602839 ],
+       [ 0.05540071, -0.0810608 ,  0.03090247, -0.11809059, -0.06433534]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verifikasi apakah keduanya benar-benar invers matrik terhadap satu sama lainnya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="nd">@Ainv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0.,  0., -0.,  0.],
+       [-0.,  1.,  0.,  0.,  0.],
+       [-0., -0.,  1.,  0.,  0.],
+       [ 0., -0.,  0.,  1.,  0.],
+       [ 0., -0., -0., -0.,  1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">-0.</span></code> berarti ada banyak digit setelah titik, tetapi dihilangkan di sini.</p>
+<p>Cara yang mudah untuk menghitung invers adalah dengan membuat matriks augmented <span class="math notranslate nohighlight">\([ A\,|\,\mathbf{I}]\)</span>, lalu mengalikan deret <span class="math notranslate nohighlight">\(E\)</span> yang merupakan operasi baris elementer hingga matriks <span class="math notranslate nohighlight">\(A\)</span> menjadi bentuk baris tereduksi, jika full rank berarti <span class="math notranslate nohighlight">\(A \rightarrow \mathbf{I}\)</span>. Kemudian <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> pada RHS pada augmented matrix akan diubah menjadi <span class="math notranslate nohighlight">\(A^{-1}\)</span> secara otomatis.</p>
+<p>Kita dapat menunjukkan dengan fungsi <code class="docutils literal notranslate"><span class="pre">.rref()</span></code> SymPy pada matriks augmented <span class="math notranslate nohighlight">\([A\,|\,I]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="n">I</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+
+<span class="n">AI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="p">))</span> <span class="c1"># stack the matrix A and I horizontally</span>
+<span class="n">AI</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">AI</span><span class="p">);</span> <span class="n">AI</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}6.0 &amp; 1.0 &amp; -13.0 &amp; -9.0 &amp; 3.0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\-5.0 &amp; -14.0 &amp; -3.0 &amp; 10.0 &amp; 16.0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0\\13.0 &amp; -9.0 &amp; 4.0 &amp; 10.0 &amp; 13.0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0\\20.0 &amp; 5.0 &amp; 3.0 &amp; -21.0 &amp; -19.0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0\\-19.0 &amp; 5.0 &amp; -11.0 &amp; 23.0 &amp; 8.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AI_rref</span> <span class="o">=</span> <span class="n">AI</span><span class="o">.</span><span class="n">rref</span><span class="p">();</span> <span class="n">AI_rref</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left( \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.0101446396249965 &amp; -0.0126338939924791 &amp; 0.0460085643995489 &amp; 0.0292479863226459 &amp; 0.0161635984926015\\0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0.0414173398991054 &amp; -0.132679966769809 &amp; 0.0346388624679437 &amp; -0.0921415413511203 &amp; -0.0252958811418664\\0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; -0.0319268694992595 &amp; -0.0503389238715581 &amp; 0.0130512780379739 &amp; -0.0600039731750485 &amp; -0.0510673392971092\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -0.0351625991788772 &amp; 0.0225266985323332 &amp; 0.0259701169076658 &amp; 0.0565695847430078 &amp; 0.0602839014170991\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0.0554007087502157 &amp; -0.0810607976048577 &amp; 0.0309024725991387 &amp; -0.118090588391105 &amp; -0.0643353359740901\end{matrix}\right], \  \left( 0, \  1, \  2, \  3, \  4\right)\right)\end{split}\]</div>
+</div>
+</div>
+<p>Ekstrak blok RHS, ini adalah <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">AI_rref</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">5</span><span class="p">:];</span><span class="n">Ainv</span> <span class="c1"># extract the RHS block</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0.0101446396249965 &amp; -0.0126338939924791 &amp; 0.0460085643995489 &amp; 0.0292479863226459 &amp; 0.0161635984926015\\0.0414173398991054 &amp; -0.132679966769809 &amp; 0.0346388624679437 &amp; -0.0921415413511203 &amp; -0.0252958811418664\\-0.0319268694992595 &amp; -0.0503389238715581 &amp; 0.0130512780379739 &amp; -0.0600039731750485 &amp; -0.0510673392971092\\-0.0351625991788772 &amp; 0.0225266985323332 &amp; 0.0259701169076658 &amp; 0.0565695847430078 &amp; 0.0602839014170991\\0.0554007087502157 &amp; -0.0810607976048577 &amp; 0.0309024725991387 &amp; -0.118090588391105 &amp; -0.0643353359740901\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Saya menulis fungsi untuk membulatkan angka float ke digit <span class="math notranslate nohighlight">\(4\)</span>th, di bagian atas file ini, tetapi ini tidak mutlak diperlukan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">round_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">num_digits</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">xreplace</span><span class="p">({</span><span class="n">n</span> <span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">num_digits</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">atoms</span><span class="p">(</span><span class="n">sy</span><span class="o">.</span><span class="n">Number</span><span class="p">)})</span>
+
+<span class="n">round_expr</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}0.0101 &amp; -0.0126 &amp; 0.046 &amp; 0.0292 &amp; 0.0162\\0.0414 &amp; -0.1327 &amp; 0.0346 &amp; -0.0921 &amp; -0.0253\\-0.0319 &amp; -0.0503 &amp; 0.0131 &amp; -0.06 &amp; -0.0511\\-0.0352 &amp; 0.0225 &amp; 0.026 &amp; 0.0566 &amp; 0.0603\\0.0554 &amp; -0.0811 &amp; 0.0309 &amp; -0.1181 &amp; -0.0643\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Kita dapat memverifikasi apakah <span class="math notranslate nohighlight">\(AA^{-1}=\mathbf{I}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">round_expr</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="n">Ainv</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{matrix}1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.0\end{matrix}\right]\end{split}\]</div>
+</div>
+</div>
+<p>Kita mendapatkan <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>, yang berarti blok RHS memang <span class="math notranslate nohighlight">\(A^{-1}\)</span>.</p>
+<section id="karakteristik-matrik-invers">
+<h3>Karakteristik matrik invers<a class="headerlink" href="#karakteristik-matrik-invers" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Jika <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> keduanya dapat diinverskan, maka <span class="math notranslate nohighlight">\((AB)^{-1}=B^{-1}A^{-1}\)</span>.</p></li>
+<li><p>Jika <span class="math notranslate nohighlight">\(A\)</span> dapat diinverskan, maka <span class="math notranslate nohighlight">\((A^T)^{-1}=(A^{-1})^T\)</span>.</p></li>
+<li><p>Jika <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> keduanya dapat diinverskan dan simetris sehingga <span class="math notranslate nohighlight">\(AB=BA\)</span>, maka <span class="math notranslate nohighlight">\(A^{-1}B\)</span> simetris.</p></li>
+</ol>
+<p>Karakteristik pertama sangat jelas
+\begin{align}
+ABB^{-1}A^{-1}=AIA^{-1}=I=AB(AB)^{-1}
+\end{align}</p>
+<p>Trik karakter  kedua adalah menunjukkan hal itu
+$<span class="math notranslate nohighlight">\(
+A^T(A^{-1})^T = I
+\)</span><span class="math notranslate nohighlight">\(
+Kita dapat menggunakan karakteristik matrik transpose
+\)</span><span class="math notranslate nohighlight">\(
+A^T(A^{-1})^T=(A^{-1}A)^T = I^T = I
+\)</span>$</p>
+<p>Karakteristik ketiga menunjukkan
+$<span class="math notranslate nohighlight">\(
+A^{-1}B = (A^{-1}B)^T
+\)</span><span class="math notranslate nohighlight">\(
+Gunakan sifat matrik tanspose
+\)</span><span class="math notranslate nohighlight">\(
+(A^{-1}B)^{T}=B^T(A^{-1})^T=B(A^T)^{-1}=BA^{-1}
+\)</span><span class="math notranslate nohighlight">\(
+Kita menggunakan \)</span>AB = BA<span class="math notranslate nohighlight">\( untuk memproses
+\begin{align}
+AB&amp;=BA\\
+A^{-1}ABA^{-1}&amp;=A^{-1}BAA^{-1}\\
+BA^{-1}&amp;=A^{-1}B
+\end{align}
+Dimasukkan ke persaman sebelumnya kita dapatkan
+\)</span><span class="math notranslate nohighlight">\(
+(A^{-1}B)^{T}=BA^{-1}=A^{-1}B
+\)</span>$</p>
+</section>
+</section>
+<section id="aplikasi-untuk-sistem-linier">
+<h2>Aplikasi untuk sistem linier<a class="headerlink" href="#aplikasi-untuk-sistem-linier" title="Link to this heading">#</a></h2>
+<p>Contoh perkalian matriks adalah perkalian suatu matrik  dengan vektor yang <em>tidak diketahui</em> untuk mendapatkan vektor yang tidak diketahui. Misalkan kita memiliki matrik <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> adalah vektor yang diketahui, dan <span class="math notranslate nohighlight">\(X\)</span> menjadi vektor yang tidak diketahui, kita dapat menulis persamaan matriks <span class="math notranslate nohighlight">\(AX=B\)</span> untuk menggambarkan perkalian matrik. Berikut contohnya.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+A= \left[ \begin{array}{rrr} 1 &amp; 3 &amp; -2 \\ 5 &amp; 2 &amp; 0 \\ 4 &amp; 2 &amp; -1 \\ 2 &amp; 2 &amp; 0 \end{array}\right] \hspace{1cm}
+X= \left[ \begin{array}{r} x_1 \\ x_2 \\ x_3 \end{array}\right] \hspace{1cm}
+B= \left[ \begin{array}{r} 0 \\ 10 \\ 7 \\ 4  \end{array}\right] \hspace{1cm}
+\end{equation}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+AX = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; -2 \\ 5 &amp; 2 &amp; 0 \\ 4 &amp; 2 &amp; -1 \\ 2 &amp; 2 &amp; 0 \end{array}\right]
+\left[ \begin{array}{r} x_1 \\ x_2 \\ x_3 \end{array}\right]=
+\left[ \begin{array}{r} 0\\ 10 \\ 7 \\ 4  \end{array}\right]= B
+\end{equation}
+\end{split}\]</div>
+<p>Kita perhatikan bahwa persamaan matriks tunggal <span class="math notranslate nohighlight">\(AX=B\)</span> sebenarnya mewakili sistem persamaan linier.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+x_1 + 3x_2 - 2x_3 &amp; = &amp; 0\\
+5x_1 + 2x_2 \quad\quad &amp; = &amp; 10 \\
+4x_1 + 2x_2 - x_3 &amp; = &amp; 7 \\
+2x_1 + 2x_2 \quad\quad &amp; = &amp; 4
+\end{eqnarray*}
+\end{split}\]</div>
+<p>Dalam hal ini, matriks <span class="math notranslate nohighlight">\(A\)</span> dikenal sebagai <strong>matriks koefisien</strong>.</p>
+</section>
+<section id="matrik-identitas">
+<h2>Matrik identitas<a class="headerlink" href="#matrik-identitas" title="Link to this heading">#</a></h2>
+<p><strong>Matriks identitas</strong> adalah matriks bujursangkan yang sifatnya mirip dengan angka 1 jika dalam perkalian biasa. Matriks identitas, diberi label <span class="math notranslate nohighlight">\(I\)</span>, terdiri dari matriks dengan memiliki nilai 1 pada elemen-elemen  diagonal utama matrik , dan nol pada elemen lainya. Di bawah ini adalah versi <span class="math notranslate nohighlight">\(I\)</span> denga ukuran matrik <span class="math notranslate nohighlight">\(4 \times 4\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+I = \left[ \begin{array}{ccc} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Jika <span class="math notranslate nohighlight">\(A\)</span> adalah matriks <span class="math notranslate nohighlight">\(4 \times 4\)</span> , perkalian dengan <span class="math notranslate nohighlight">\(I\)</span> akan menghasilkan <span class="math notranslate nohighlight">\(A\)</span>. Selain itu,berlaku juga sifat komutatif pada  perkalian matriknya</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+AI = IA = A
+\end{equation}
+\]</div>
+<p>Fungsi NumPy <span class="math notranslate nohighlight">\(\texttt{eye}\)</span> menghasilkan matriks identitas dengan ukuran yang ditentukan. Perhatikan bahwa kita hanya perlu memberikan <span class="math notranslate nohighlight">\(\texttt{eye}\)</span> dengan satu parameter karena matriks identitas harus berbentuk bujursangkar. Di sini kami menampilkan perkalian <span class="math notranslate nohighlight">\(I\)</span> dengan matriks acak <span class="math notranslate nohighlight">\(5\times 5\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="n">I</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="nd">@I5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I5</span><span class="nd">@R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ -7  -4  -2   2   7]
+ [ -3  -8  -6  -7  -2]
+ [  1   6   4  -8  -5]
+ [ -3   9  -8  -2 -10]
+ [ -9   9   0   2   2]]
+
+
+[[ -7.  -4.  -2.   2.   7.]
+ [ -3.  -8.  -6.  -7.  -2.]
+ [  1.   6.   4.  -8.  -5.]
+ [ -3.   9.  -8.  -2. -10.]
+ [ -9.   9.   0.   2.   2.]]
+
+
+[[ -7.  -4.  -2.   2.   7.]
+ [ -3.  -8.  -6.  -7.  -2.]
+ [  1.   6.   4.  -8.  -5.]
+ [ -3.   9.  -8.  -2. -10.]
+ [ -9.   9.   0.   2.   2.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notes:</p>
+<ol class="arabic simple">
+<li><p>Penghitungan secara aktual  dengan matriks identitas jarang dilakukan, namun ide ini berguna untuk penghitungan simbolis dan mengembangkan teori lebih lanjut.</p></li>
+<li><p>Jika kita membahas matriks bukan bujursangkar, maka kita harus berhati-hati dalam menggunakan matriks identitas dengan ukuran yang benar tergantung pada orde perkaliannya. Misalnya, jika <span class="math notranslate nohighlight">\(C\)</span> adalah matriks <span class="math notranslate nohighlight">\(2\times 3\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span> adalah identitas <span class="math notranslate nohighlight">\(2\times 2\)</span>, dan <span class="math notranslate nohighlight">\(I_3\)</span> adalah identitas <span class="math notranslate nohighlight">\(3\times 3 \)</span>, kita akan mendapatkan hasil sebagai berikut.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+I_2 C = CI_3 = C
+\end{equation}
+\]</div>
+</section>
+<section id="perkalian-vektor-matrik">
+<h2>Perkalian Vektor-Matrik<a class="headerlink" href="#perkalian-vektor-matrik" title="Link to this heading">#</a></h2>
+<p>Salah satu kasus khusus perkalian matriks patut mendapat perhatian khusus, yaitu kasus dimana salah satu matriksnya adalah vektor. Kasus ini begitu penting sehingga lazim dibahas tersendiri dan diberi nama khusus, <strong>perkalian matriks-vektor</strong>. Misalkan <span class="math notranslate nohighlight">\(P\)</span> adalah matriks  dan ukurannya adalah <span class="math notranslate nohighlight">\(n \times m\)</span>, dan <span class="math notranslate nohighlight">\(Y\)</span> adalah vektor dengan ukuran yaitu <span class="math notranslate nohighlight">\(m \times 1\)</span>. Hasil kali <span class="math notranslate nohighlight">\(PY\)</span> adalah vektor <span class="math notranslate nohighlight">\(n \times 1\)</span>. Hubungan antara vektor baru ini dan kolom matriks <span class="math notranslate nohighlight">\(P\)</span> inilah yang menjadikan hal ini penting.</p>
+<p>Berikut contoh khusus dalam hal ini</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+P = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; -2 \\ 5 &amp; 2 &amp; 0 \\ 4 &amp; 2 &amp; -1 \\ 2 &amp; 2 &amp; 0 \end{array}\right]\hspace{1cm}
+Y = \left[ \begin{array}{r} 2 \\ -3 \\ 4 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Dalam kasus perkalian matriks-vektor ini, kita dapat membentuk penghitungannya sedikit berbeda untuk lebih memahami apa yang terjadi.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+PY = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; -2 \\ 5 &amp; 2 &amp; 0 \\ 4 &amp; 2 &amp; -1 \\ 2 &amp; 2 &amp; 0 \end{array}\right]
+\left[ \begin{array}{r} 2 \\ -3 \\ 4 \end{array}\right]=
+2\left[ \begin{array}{r} 1 \\ 5 \\ 4 \\ 2 \end{array}\right] -
+3\left[ \begin{array}{r} 3 \\ 2 \\ 2 \\ 2 \end{array}\right] +
+4\left[ \begin{array}{r} -2 \\ 0 \\ -1 \\ 0 \end{array}\right] =
+\left[ \begin{array}{r} -15\\ 4 \\ -2 \\ -2  \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Ini adalah operasi yang sama yang kita lakukan sebelumnya, tetapi sekarang kita melihat bahwa perkalian ini adalah hasil penjumlahan kolom <span class="math notranslate nohighlight">\(P\)</span> setelah terlebih dahulu mengalikan masing-masing kolom dengan elemen-elemen terkait di <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+</section>
+<section id="perkalian-matrik-dengan-kolom-kolom">
+<h2>Perkalian matrik dengan kolom-kolom<a class="headerlink" href="#perkalian-matrik-dengan-kolom-kolom" title="Link to this heading">#</a></h2>
+<p>Kita dapat mengembangkan  perhitungan perkalian matriks-vektor untuk lebih memahami secara pasti apa yang dihasilkan dari perkalian matriks-matriks. Misalkan <span class="math notranslate nohighlight">\(Y\)</span> dari perhitungan sebelumnya sebenarnya adalah kolom ketiga dari matriks <span class="math notranslate nohighlight">\(C\)</span> ukuran <span class="math notranslate nohighlight">\(3\times 4\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+C = \left[ \begin{array}{rrrr} * &amp; * &amp; 2 &amp; * \\ * &amp; * &amp; -3 &amp; * \\ * &amp; * &amp; 4 &amp; *\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Kolom ketiga dari perkalian <span class="math notranslate nohighlight">\(PC\)</span> akan sama persis dengan <span class="math notranslate nohighlight">\(PY\)</span>! Kolom lain dari <span class="math notranslate nohighlight">\(PC\)</span> akan menjadi hasil kali <span class="math notranslate nohighlight">\(P\)</span> dengan kolom <span class="math notranslate nohighlight">\(C\)</span> yang bersesuaian.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+PC = \left[ \begin{array}{rrrr} * &amp; * &amp; -15 &amp; * \\ * &amp; * &amp; 4 &amp; * \\* &amp; * &amp; -2 &amp; *  \\ * &amp; * &amp; -2 &amp; *\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Diskusi ini menawarkan peluang  untuk mempelajari cara melakukan operasi pada bagian array NumPy menggunakan fitur yang disebut <strong>slicing</strong>. Mari kita buat matriks <span class="math notranslate nohighlight">\(P\)</span> dan <span class="math notranslate nohighlight">\(C\)</span>, lalu definisikan <span class="math notranslate nohighlight">\(X\)</span> sebagai <strong>subarray</strong> dari <span class="math notranslate nohighlight">\(C\)</span>. Untuk membuat subarray <span class="math notranslate nohighlight">\(C\)</span>, kita menggunakan sintaks <span class="math notranslate nohighlight">\(\texttt{C[a:b,c:d]}\)</span>. Ini akan membuat objek array yang berbentuk <span class="math notranslate nohighlight">\((ba)\times(d-c)\)</span> dan berisi elemen baris <span class="math notranslate nohighlight">\(a\)</span> hingga <span class="math notranslate nohighlight">\(b-1\)</span> dan kolom <span class="math notranslate nohighlight">\(c\)</span> hingga <span class="math notranslate nohighlight">\(d-1\)</span> dari <span class="math notranslate nohighlight">\(C\)</span>.
+Khusunya, kami ingin <span class="math notranslate nohighlight">\(X\)</span> menyertakan semua baris <span class="math notranslate nohighlight">\(C\)</span>, tetapi hanya kolom ketiga (yang memiliki indeks Python 2!).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="nd">@X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1  3 -2]
+ [ 5  2  0]
+ [ 4  2 -1]
+ [ 2  2  0]] 
+
+[[ 0  6  2  6]
+ [-1  1 -3  4]
+ [ 0  2  4  8]] 
+
+[[ 2]
+ [-3]
+ [ 4]] 
+
+[[-15]
+ [  4]
+ [ -2]
+ [ -2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Catatan array slicing:</p>
+<ul class="simple">
+<li><p>Cara lain untuk memiliki  semua baris (atau semua kolom ) dari array untuk digunakan: tanpa suatu bilangan.  Pada contoh diatas, kita dapat menggunakan bari kode berikut untuk menghasilkan hasil yang sama. Silahkan diedit cell diatas</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">C</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>JIka hanya ingin memilih satu barus atau kolom,  silahkan coba baris kode berikut</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">C</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>ini memang kode yang valid, tetapi array <span class="math notranslate nohighlight">\(X\)</span> tidak persis seperti yang kita harapkan. Sebaliknya kita mendapatkan array dengan elemen yang benar, tetapi ukurannya tidak benar.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p><strong>Latihan 1:</strong> Hitung <span class="math notranslate nohighlight">\(-2E\)</span>, <span class="math notranslate nohighlight">\(G+F\)</span>, <span class="math notranslate nohighlight">\(4F-G\)</span>, <span class="math notranslate nohighlight">\(HG\)</span>, dan <span class="math notranslate nohighlight">\(GE\)</span> menggunakan definisi matriks berikut. Kerjakan latihan di atas kertas terlebih dahulu, kemudian periksa dengan melakukan perhitungan dengan array NumPy.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+E = \left[ \begin{array}{r} 5 \\ -2 \end{array}\right] \hspace{1cm}
+F = \left[ \begin{array}{rr} 1 &amp; 6 \\ 2 &amp; 0 \\ -1 &amp; -1 \end{array}\right] \hspace{1cm}
+G = \left[ \begin{array}{rr} 2 &amp; 0\\ -1 &amp; 3 \\ -1 &amp; 6 \end{array}\right] \hspace{1cm}
+H = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; 1 \\ 1 &amp; -2 &amp; 2 \\ 3 &amp; 4 &amp; -1\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 2:</strong> Carilah nilai <span class="math notranslate nohighlight">\(x\)</span> dan <span class="math notranslate nohighlight">\(y\)</span> agar persamaan ini berlaku.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{rr} 1 &amp; 3 \\ -4 &amp; 2 \end{array}\right]
+\left[ \begin{array}{rr} 3 &amp; x \\ 2 &amp; y \end{array}\right]=
+\left[ \begin{array}{rr} 9 &amp; 10 \\ -8 &amp; 16 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 3:</strong> Tentukan array NumPy untuk matriks <span class="math notranslate nohighlight">\(H\)</span> dan <span class="math notranslate nohighlight">\(G\)</span>  di bawah ini.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+H = \left[ \begin{array}{rrr} 3 &amp; 3 &amp; -1  \\ -3 &amp; 0 &amp; 8 \\  1 &amp; 6 &amp; 5 \end{array}\right]\hspace{2cm}
+G = \left[ \begin{array}{rrrr} 1 &amp; 5 &amp; 2 &amp; -3 \\ 7 &amp; -2 &amp; -3 &amp; 0 \\ 2 &amp; 2 &amp; 4 &amp; 6\end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\((a)\)</span> Kalikan kolom kedua dan ketiga <span class="math notranslate nohighlight">\(H\)</span> dengan baris pertama dan kedua <span class="math notranslate nohighlight">\(G\)</span>. Gunakan slice untuk membuat subarray. Apakah hasilnya ada hubungannya dengan perkalian <span class="math notranslate nohighlight">\(HG\)</span>  secara utuh?</p>
+<p><span class="math notranslate nohighlight">\((b)\)</span> Kalikan baris pertama dan kedua <span class="math notranslate nohighlight">\(H\)</span> dengan kolom kedua dan ketiga <span class="math notranslate nohighlight">\(G\)</span>. Apakah hasil ini ada hubungannya dengan perkalian <span class="math notranslate nohighlight">\(HG\)</span> secara utuh?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 4:</strong> Buatlah matriks <span class="math notranslate nohighlight">\(4\times 4\)</span> <span class="math notranslate nohighlight">\(B\)</span> dengan elemen matrik bilangan bulat acak. Hitung matriks <span class="math notranslate nohighlight">\(P = \frac12(B+B^T)\)</span> dan <span class="math notranslate nohighlight">\(Q = \frac12(B-B^T)\)</span>. Jalankan ulang kode Anda beberapa kali untuk mendapatkan matriks yang berbeda. Apa yang Anda perhatikan tentang <span class="math notranslate nohighlight">\(P\)</span> dan <span class="math notranslate nohighlight">\(Q\)</span>? Jelaskan mengapa hal itu haru selalu benar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 5:</strong> Sama seperti elemen matriks yang dapat berupa bilangan bulat atau bilangan real, kita juga dapat memiliki matriks yang elemennya juga merupakan matriks. <strong>Matriks blok</strong> adalah matriks apa pun yang telah kami tafsirkan sebagai dipartisi ke dalam <strong>submatriks</strong> ini. Hitung perkalian dari <span class="math notranslate nohighlight">\(HG\)</span> dengan menggunakan<span class="math notranslate nohighlight">\(H_i\)</span> dan <span class="math notranslate nohighlight">\(G_j\)</span> sebagai elemen matriksnya masing-masing. Jika kita mempunyai dua matriks yang dapat dikalikan seperti biasanya, apakah ada partisi yang memungkinkan kita mengalikan menggunakan submatriks sebagai elemennya?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+H = \left[ \begin{array}{cc|cc} 1 &amp; 3 &amp; 2 &amp; 0  \\ -1 &amp; 0 &amp; 3 &amp; 3 \\ \hline 2 &amp; 2 &amp; -2 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 4 \end{array}\right] = \left[ \begin{array}{} H_1 &amp; H_2 \\ H_3 &amp; H_4\end{array} \right] \hspace{2cm}
+G = \left[ \begin{array}{cc|c} 3 &amp; 0 &amp; 5 \\ 1 &amp; 1 &amp; -3 \\ \hline 2 &amp; 0 &amp; 1 \\ 0 &amp; 2 &amp; 1\end{array}\right] = \left[ \begin{array}{} G_1 &amp; G_2 \\ G_3 &amp; G_4\end{array} \right]
+\end{equation}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Code solution here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "moelaab/alin",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-operasi-matrik">Operasi-operasi matrik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-menemukan-dua-matrik-bersifat-komutatif">Cara menemukan dua matrik bersifat komutatif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-transpose">Matrik Transpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-elementer">Matrik elementer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-invers">Matrik Invers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-matrik-invers">Karakteristik matrik invers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-untuk-sistem-linier">Aplikasi untuk sistem linier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-identitas">Matrik identitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-vektor-matrik">Perkalian Vektor-Matrik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-matrik-dengan-kolom-kolom">Perkalian matrik dengan kolom-kolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vlad and Donald
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

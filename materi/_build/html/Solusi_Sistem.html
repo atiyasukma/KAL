@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Memecahkan Sistem persaman menggunakan Eliminasi &#8212; Physics tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "moelaab/alin");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Solusi_Sistem';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Matrik Invers" href="Matrik_Inverse.html" />
+    <link rel="prev" title="Eliminasi Gaussian" href="Eliminasi_Gaussian.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Pengantar.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Physics tutorials - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Physics tutorials - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Pengantar.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Sistem_Linier.html">Sistem Linier</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Eliminasi_Gaussian.html">Eliminasi Gaussian</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Memecahkan Sistem persaman menggunakan Eliminasi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Matrik_Inverse.html">Matrik Invers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Faktorisasi_LU.html">Faktorisasi LU</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/moelaab/alin/issues/new?title=Issue%20on%20page%20%2FSolusi_Sistem.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Solusi_Sistem.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Memecahkan Sistem persaman menggunakan Eliminasi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-subsistusi-balik-back-substitution-function">Fungsi subsistusi balik (Back substitution function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-reduksi-baris">Fungsi reduksi baris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-penyelesaian-sistem-persamaan">Fungsi untuk penyelesaian sistem persamaan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="memecahkan-sistem-persaman-menggunakan-eliminasi">
+<h1>Memecahkan Sistem persaman menggunakan Eliminasi<a class="headerlink" href="#memecahkan-sistem-persaman-menggunakan-eliminasi" title="Link to this heading">#</a></h1>
+<p>Pada bagian ini kita membahas kode yang diperlukan untuk menyelesaikan sistem linier <span class="math notranslate nohighlight">\(AX=B\)</span> menggunakan eliminasi. Kita akan membatasi pada kasus di mana <span class="math notranslate nohighlight">\(A\)</span> adalah matriks bujur sangkar <span class="math notranslate nohighlight">\(n\times n\)</span>, dan sistem mempunyai tepat satu solusi. Kasus yang lebih umum memerlukan lebih banyak pengetahuan tentang teori yang mendasarinya dan akan dibahas pada bab selanjutnya.</p>
+<p>Saat menulis kode program untuk mengerjakan soal yang kompleks, dimulai dengan   membuat kode program untuk  mengerjakan bagian-bagian yang kecil  yang lebih sederhana dari masalah komplek tersebut.Setelah itu baru merakit bagian-bagian tersebut untuk memecahkan masalah yang lebih kompleks. Dalam kasus kami, kami akan membagi metode solusi penyelesaian  menjadi dua bagian.</p>
+<ol class="arabic simple">
+<li><p>Melakukan eliminasi pada matriks augmented yang  terkait.</p></li>
+<li><p>Lakukan substitusi balik  pada sistem segitiga yang dihasilkan dari eliminasi.</p></li>
+</ol>
+<p>Penting juga untuk dipertimbangkan  bagaimana  menulis kode  sehingga kita dapat menggunakannya kembali untuk tugas lain nantinya.</p>
+<section id="fungsi-subsistusi-balik-back-substitution-function">
+<h2>Fungsi subsistusi balik (Back substitution function)<a class="headerlink" href="#fungsi-subsistusi-balik-back-substitution-function" title="Link to this heading">#</a></h2>
+<p>Kita akan mulai dengan langkah, karena bagian tersebut lebih mudah. JIka tahap eliminasi telah berhasil, kita akan memilik sistem  segitiga atas  <span class="math notranslate nohighlight">\(UX=B\)</span> yang memiliki bentuk seperti berikut
+$<span class="math notranslate nohighlight">\(
+\begin{equation}
+\left[ \begin{array}{rrrr} * &amp; * &amp; * &amp; * \\ 0 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; * \end{array}\right]
+\left[ \begin{array}{r}  x_1 \\  x_2  \\ x_3 \\ x_4  \end{array}\right]=
+\left[ \begin{array}{r}  * \\  *  \\ * \\ *  \end{array}\right]
+\end{equation}
+\)</span>$</p>
+<p>Kode tersebut akan kita masukkan ke dalam suatu fungsi agar nantinya mudah digunakan kembali. Untuk fungsi ini, misalkan kita diberikan matriks segitiga atas <span class="math notranslate nohighlight">\(U\)</span> dan vektor yang diketahui <span class="math notranslate nohighlight">\(B\)</span> dan kita ingin mencari vektor <span class="math notranslate nohighlight">\(X\)</span> sehingga <span class="math notranslate nohighlight">\(UX=B\)</span>. Perhatikan bahwa kita dapat membuat asumsi lain, seperti matriks <span class="math notranslate nohighlight">\(U\)</span> yang memiliki elemen-elemen diagonal sama dengan 1. Semakin sedikit asumsi yang kita buat, semakin berguna kode tersebut nantinya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">BackSubstitution</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     U is a NumPy array that represents an upper triangular square mxm matrix.</span>
+<span class="c1">#     B is a NumPy array that represents an mx1 vector</span>
+<span class="c1">#     BackSubstitution will return an mx1 vector that is the solution of the</span>
+<span class="c1">#     system UX=B.</span>
+<span class="c1"># =============================================================================</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># m is number of rows and columns in U</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># Calculate entries of X backward from m-1 to 0</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zero entry found in U pivot position&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sebelum melanjutkan, mari kita uji fungsi ini. Kita dapat membangun matriks dengan bentuk segitiga yang tepat, <em>pilih solusi</em>, lalu buat sistem <span class="math notranslate nohighlight">\(UX=B\)</span> sehingga kita mengetahui solusinya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make up an upper triangular matrix.  Could we make a random upper triangular matrix here?  What could go wrong?</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+<span class="c1"># We will choose the solution X_true.  We can put in any numbers we like here.</span>
+<span class="n">X_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">U</span><span class="nd">@X_true</span>
+<span class="c1"># Call the function.  It should produce the same array as X_true if it works correctly.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">BackSubstitution</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3.]
+ [4.]
+ [3.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://">link text</a>Sebelum membahas langkah eliminasi, kita harus mencatat bahwa fungsi <span class="math notranslate nohighlight">\(\texttt{BackSubstitution}\)</span> ini <em>akan gagal</em> memberikan hasil yang berarti jika salah satu entri diagonal <span class="math notranslate nohighlight">\(U\)</span> adalah nol. Kita harus mengingat hal ini saat menggunakan kode ini di masa mendatang.</p>
+</section>
+<section id="fungsi-reduksi-baris">
+<h2>Fungsi reduksi baris<a class="headerlink" href="#fungsi-reduksi-baris" title="Link to this heading">#</a></h2>
+<p>Eliminasi adalah bagian yang lebih besar dan lebih kompleks dari metode penyelesain. Ini juga merupakan tugas umum yang akan muncul di bagian selanjutnya, jadi kita memerlukan beberapa kode yang dapat kita gunakan kembali di lain waktu. Kami menginginkan fungsi yang akan menjalankan semua langkah eliminasi. Idealnya kita ingin fungsi tersebut melakukan eliminasi pada array dengan ukuran atau dengan ukuran matrik sembarang, dan juga dapat  melakukan pertukaran baris bila diperlukan.</p>
+<p>Mari kita perjelas tujuannya. Fungsi tersebut harus menerima array matrik sembarang dan menghasilkan array yang memiliki karakteristik sebagai berikut.</p>
+<ol class="arabic simple">
+<li><p>Elemen bukan nol pertama di setiap baris adalah 1. Elemen ini disebut pivot.</p></li>
+<li><p>Setiap pivot terletak di sebelah kanan pivot pada semua baris di atasnya.</p></li>
+<li><p>Elemen di bawah setiap pivot adalah 0.</p></li>
+<li><p>Baris yang semuan elemennya nol terletak di bawah baris yang berisi entri bukan nol.</p></li>
+</ol>
+<p>Matriks seperti ini dikatakan dalam <strong>bentuk eselon baris</strong>. Berikut tiga contoh matriks dalam bentuk yang memenuhi kriteria diatas.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{cccc} 1 &amp; * &amp; * &amp; * \\ 0 &amp; 1 &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{ccc} 1 &amp; * &amp; *  \\ 0 &amp; 0 &amp; 1  \\ 0 &amp; 0 &amp; 0 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\left[ \begin{array}{cccccc} 1 &amp; * &amp; * &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Penting untuk diperhatikan bahwa setiap baris dapat berisi paling banyak satu pivot dan setiap kolom dapat berisi paling banyak satu pivot.</p>
+<p>Sebelum membuat kode untuk mencari bentuk eselon baris suatu matriks, terlebih dahulu kita klarifikasi terlebih dahulu  matriks yang kita gunakan untuk menyelesaikan sistem berbentuk <span class="math notranslate nohighlight">\(AX=B\)</span>. Ingat pembahasan pada  bagian <a class="reference internal" href="#Gaussian_Elimination.ipynb"><span class="xref myst">Eliminasi Gaussian</span></a> bahwa operasi baris yang sama diperlukan untuk membawa <span class="math notranslate nohighlight">\(A\)</span> ke bentuk eselon baris juga harus diterapkan ke <span class="math notranslate nohighlight">\(B\)</span>. Dalam praktiknya kita dapat menggabungkan <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> untuk membentuk apa yang kita sebut <strong>matriks augmented</strong>. Selanjutnya kit melakukan operasi baris pada matriks ini. Berikut adalah contoh matriks augmented , yang akan kita tulis dengan <span class="math notranslate nohighlight">\([A|B]\)</span>, yang terkait dengan sistem <span class="math notranslate nohighlight">\(AX=B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+AX = B \hspace{1cm} \left[ \begin{array}{rrr} 3 &amp; -1 \\ 5 &amp; 2 \end{array}\right]
+\left[ \begin{array}{r} x_1 \\ x_2 \end{array}\right]=
+\left[ \begin{array}{r} 0\\ 7  \end{array}\right] \hspace{1cm} \to \hspace{1cm}
+[A|B] = \left[ \begin{array}{rr|r} 3 &amp; -1 &amp; 0 \\ 5 &amp; 2 &amp; 7 \end{array}\right]
+\end{equation}
+\end{split}\]</div>
+<p>Disini ukuran <span class="math notranslate nohighlight">\(A\)</span> adalah <span class="math notranslate nohighlight">\(n\times n\)</span>, yang berarti matriks augmented yang perlu kita proses adalah <span class="math notranslate nohighlight">\(n\times(n+1)\)</span>. Kami juga akan berasumsi bahwa sistem <span class="math notranslate nohighlight">\(AX=B\)</span> memiliki penyelesaian tunggal. Jika hal ini benar, matriks augmented akan memiliki pivot di masing-masing kolom <span class="math notranslate nohighlight">\(n\)</span> pertama, dengan posisi pivot terletak di sepanjang garis element diagonal yang dimulai dari elemen kiri atass. Jika bentuk eselon baris dari matriks augmented memiliki nilai nol di salah satu posisi ini, proses penyelesaian terpecah seperti yang ditunjukkan dalam contoh <a class="reference internal" href="#Gaussian_Elimination.ipynb"><span class="xref myst">Eliminasi Gaussian</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">laguide</span> <span class="k">as</span> <span class="nn">lag</span>
+
+<span class="k">def</span> <span class="nf">RowReduction</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1"># A is a NumPy array that represents an augmented matrix of dimension n x (n+1)</span>
+<span class="c1"># associated with a linear system.  RowReduction returns B, a NumPy array that</span>
+<span class="c1"># represents the row echelon form of A.  RowReduction may not return correct</span>
+<span class="c1"># results if the the matrix A does not have a pivot in each column.</span>
+<span class="c1"># =============================================================================</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># A has m rows</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># It is assumed that A has m+1 columns</span>
+
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+    <span class="c1"># For each step of elimination, we find a suitable pivot, move it into</span>
+    <span class="c1"># position and create zeros for all entries below.</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="c1"># Set pivot as (k,k) entry</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">pivot_row</span> <span class="o">=</span> <span class="n">k</span>
+
+        <span class="c1"># Find a suitable pivot if the (k,k) entry is zero</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">pivot</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pivot_row</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">pivot_row</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">pivot</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">pivot_row</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+
+        <span class="c1"># Swap row if needed</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pivot_row</span> <span class="o">!=</span> <span class="n">k</span><span class="p">):</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">RowSwap</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">pivot_row</span><span class="p">)</span>
+
+        <span class="c1"># If pivot is nonzero, carry on with elimination in column k</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pivot</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">RowScale</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="mf">1.</span><span class="o">/</span><span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+                <span class="n">B</span> <span class="o">=</span> <span class="n">lag</span><span class="o">.</span><span class="n">RowAdd</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="o">-</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pivot could not be found in column&quot;</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhatikan bahwa dalam modul ini kita menggunakan operasi baris yang ditulis sebelumnya. Karena fungsi-fungsi tersebut tidak ditulis dalam <em>notebook ini</em>, kita perlu mengimpornya dari modul <span class="math notranslate nohighlight">\(\texttt{laguide}\)</span>.</p>
+<p>Mari kita uji modul pada array matrik acak. Jalankan kode progam pada beberapa matriks acak dengan ukuran matrik sembarang. Apakah  selalu berhasil? Apakah Anda melihat adanya hasil yang tidak seperti biasanya? Apakah itu tergantung pada ukuran atau bentuknya? Apakah itu tergantung pada rentang angka yang digunakan?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1">## Coba RowReduction disini.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jika Anda sering menjalankan pengujian, kemungkinan besar Anda akan menemukan contoh yang hasilnya terlihat sedikit berbeda. Inilah salah satu kasusnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NumericalReductionExample</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">reduction_result</span> <span class="o">=</span> <span class="n">RowReduction</span><span class="p">(</span><span class="n">NumericalReductionExample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reduction_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+00 -8.57142857e-01  8.57142857e-01 -1.14285714e+00]
+ [-0.00000000e+00  1.00000000e+00  5.84905660e-01  1.88679245e-01]
+ [-0.00000000e+00 -0.00000000e+00  1.00000000e+00  7.08463950e-01]
+ [-0.00000000e+00 -0.00000000e+00  1.30206303e-17  1.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ada dua hal yang kita amati dalam contoh ini. Yang pertama dan paling jelas adalah semua entri ditampilkan dalam notasi ilmiah. Jika kita perhatikan adalah bahwa hasilnya tidak persis seperti yang kita inginkan. Proses eliminasi seharusnya menghasilkan angka nol untuk semua entri di bawah diagonal utama, namun dalam kasus ini ada satu entri yang bukan <span class="math notranslate nohighlight">\(\texttt{0.000}\)</span>. Sebaliknya, jumlahnya sangat kecil, mendekati <span class="math notranslate nohighlight">\(10^{-17}\)</span>.</p>
+<p>Sehingga perlu mempertanyakan kode program tersebut dan  mencari kesalahan, namun masalahnya di sini bukan terletak pada kode programmnya. Permasalahannya di sini adalah sesuatu yang lebih mendasar, dan melibatkan cara angka direpresentasikan dalam perhitungan dan batasan presisi komputer. Misalnya, bilangan <span class="math notranslate nohighlight">\(1/3\)</span>, yang memiliki representasi desimal yang terdiri dari string tak terhingga <span class="math notranslate nohighlight">\(3\)</span>s, tidak dapat direpresentasikan <em>tepat</em> menggunakan representasi desimal berhingga. Ini berarti bahwa array yang mewakili sistem mungkin sedikit salah bahkan sebelum penghitungan apa pun dilakukan. Saat komputer menjalankan operasi aritmatika, hasilnya harus dibulatkan menjadi angka-angka yang dapat direpresentasikan secara tepat. Ini yang  dikenal sebagai <strong>roundoff error</strong> dan inilah alasan kita tidak mendapatkan angka nol tepat untuk semua entri di bawah diagonal.</p>
+<p>Dalam contoh ini, kita dapat melihat bahwa elemen-elemen yang seharusnya nol ternyata hanya sangat mendekati nol. Jika kita ingin menampilkan hasil dalam format lebih mudah dibaca, kita dapat menggunakan fungsi NumPy <span class="math notranslate nohighlight">\(\texttt{round}\)</span> untuk membulatkan semua elemen ke jumlah digit tertentu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rounded_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">reduction_result</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rounded_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.       -0.857143  0.857143 -1.142857]
+ [-0.        1.        0.584906  0.188679]
+ [-0.       -0.        1.        0.708464]
+ [-0.       -0.        0.        1.      ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Catatan, kita sebaiknya  menggunakan hasil yang dibulatkan untuk tujuan menampilkan hasil. Jika kita melanjutkan dan menyelesaikan suatu sistem, atau melakukan perhitungan lain, kita harus menggunakan hasil asli dan bukan versi yang dibulatkan.</p>
+<p>Kesalahan pembulatan dapat menghadirkan tantangan yang signifikan jika kita bekerja dengan array yang besar, dan kesalahan dibiarkan terakumulasi dan bertambah. Ada beberapa strategi yang dapat diterapkan untuk mengurangi kesalahan ini, dan memastikan bahwa hasil yang bermanfaat dapat diperoleh. Perangkat lunak apa pun  harus memberikan hasil yang dapat diandalkan yang harus memperhitungkan kesalahan pembulatan. Kami akan melanjutkan  eliminasi sederhana  dengan menyadari bahwa hasil yang di peroleh tidak selalu <em>tepat</em>.</p>
+</section>
+<section id="fungsi-untuk-penyelesaian-sistem-persamaan">
+<h2>Fungsi untuk penyelesaian sistem persamaan<a class="headerlink" href="#fungsi-untuk-penyelesaian-sistem-persamaan" title="Link to this heading">#</a></h2>
+<p>Sekarang kita dapat menggabungkan fungsi <span class="math notranslate nohighlight">\(\texttt{RowReduction}\)</span> dan <span class="math notranslate nohighlight">\(\texttt{BackSubstitution}\)</span> bersama-sama untuk menyelesaikan  sistem <span class="math notranslate nohighlight">\(AX=B\)</span>. Fungsi yang akan dibuat  akan akan menerima masukan  <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span>, dan fungsi tersebut akan menghasilkan <span class="math notranslate nohighlight">\(X\)</span>. Berikut langkah-langkah yang perlu diselesaikan.</p>
+<ol class="arabic simple">
+<li><p>Membuat matriks augmented dari sistem persamaan yang ada.</p></li>
+<li><p>Implementasikan <span class="math notranslate nohighlight">\(\texttt{RowReduction}\)</span>.</p></li>
+<li><p>Pisahkan matriksnya.</p></li>
+<li><p>Implementasikan <span class="math notranslate nohighlight">\(\texttt{BackSubstitution}\)</span> dan keluarkan hasilnya.</p></li>
+</ol>
+<p>Perhatikan bahwa ada cara lain untuk membuat fungsi. Misalnya, kita dapat meminta pengguna untuk memasukkan  matriks augmented, berarti pengguna harus melakukan langkah 1 setiap kali  menggunakan fungsi ini. Lebih baik membiarkan fungsi yang menyelesaikan langkah itu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SolveSystem</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+    <span class="c1"># =============================================================================</span>
+    <span class="c1"># A is a NumPy array that represents a matrix of dimension n x n.</span>
+    <span class="c1"># B is a NumPy array that represents a matrix of dimension n x 1.</span>
+    <span class="c1"># SolveSystem returns a NumPy array of dimension n x 1 such that AX = B.</span>
+    <span class="c1"># If the system AX = B does not have a unique solution, SolveSystem may not</span>
+    <span class="c1"># generate correct results.</span>
+    <span class="c1"># =============================================================================</span>
+
+    <span class="c1"># Check shape of A</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SolveSystem accepts only square arrays.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># n is number of rows and columns in A</span>
+
+    <span class="c1"># 1. Join A and B to make the augmented matrix</span>
+    <span class="n">A_augmented</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">))</span>
+
+    <span class="c1"># 2. Carry out elimination</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">RowReduction</span><span class="p">(</span><span class="n">A_augmented</span><span class="p">)</span>
+
+    <span class="c1"># 3. Split R back to nxn piece and nx1 piece</span>
+    <span class="n">B_reduced</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span><span class="n">n</span><span class="p">:</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">A_reduced</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="c1"># 4. Do back substitution</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">BackSubstitution</span><span class="p">(</span><span class="n">A_reduced</span><span class="p">,</span><span class="n">B_reduced</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mari kita uji modul dengan membuat matriks, menentukan solusinya sesunggunya, dan membangun sistem <span class="math notranslate nohighlight">\(AX=B\)</span> sehingga kita mengetahui solusinya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="c1"># We will choose the solution X_true</span>
+<span class="n">X_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># Now make B so that the solution to AX=B is X_true</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="nd">@X_true</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">SolveSystem</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 6]
+ [-1]
+ [ 4]] 
+
+[[1.]
+ [1.]
+ [1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Selanjutnya, kita memodifikasi beberapa baris untuk menghasilkan sistem acak berikut dengan penyelesaiannya. Kita akan menggunakan <span class="math notranslate nohighlight">\(\texttt{SolveSystem}\)</span> untuk menemukan penyelesaian dan selanjutnya menghitung selisih antara hasil dan penyelesaian sebenarnya .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="c1"># We set X_true for a random solution</span>
+<span class="n">X_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># Now make B so that the solution to AX=B is X_true</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="nd">@X_true</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">SolveSystem</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="c1"># Print the difference in computed solution and actual solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_true</span><span class="o">-</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2.66453526e-15]
+ [ 0.00000000e+00]
+ [-3.55271368e-15]
+ [ 0.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 1:</strong> Gunakan <span class="math notranslate nohighlight">\(\texttt{np.random.rand(n,n)}\)</span> untuk membuat  matriks koefisien dengan elemen-elemen matrik bilangan riel acakk. Buat sistem persamaan linier dengan penyelesaian yang diketahui menggunakan matriks ini, dan uji <span class="math notranslate nohighlight">\(\texttt{SolveSystem}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Latihan 2:</strong> Bereksperimenlah untuk melihat apa yang salah menggunakan <span class="math notranslate nohighlight">\(\texttt{RowReduction}\)</span> pada matriks yang <em>bukan</em> <span class="math notranslate nohighlight">\(n\times (n+1)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Koding penyelesaian disini</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "moelaab/alin",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Eliminasi_Gaussian.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eliminasi Gaussian</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Matrik_Inverse.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrik Invers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-subsistusi-balik-back-substitution-function">Fungsi subsistusi balik (Back substitution function)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-reduksi-baris">Fungsi reduksi baris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-untuk-penyelesaian-sistem-persamaan">Fungsi untuk penyelesaian sistem persamaan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vlad and Donald
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
